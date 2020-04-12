@@ -1,18 +1,14 @@
 #' @title Agify function
 #' @description Returns the estimated age from a given name.
-#' @param name
-#' @param simplify
-#' @param country_id
-#' @param api
-#' @param count
-#' @param meta
-#'
-#' @return
+#' @param name Name/s to evaluate from. Can be a single string or a vector.
+#' @param country_id Optional parameter to estimate for a specific country. ISO2 code countrycode.
+#' @param simplify Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
+#' By default set to \code{TRUE}, which returns a vector.
+#' @param apikey API KEY from \href{https://agify.io/}{Agify.io}.
+#' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
+#' @return The estimated nationality in a single character vector form or a \code{data.frame} with additional information (e.g. probability).
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @export
-#'
-#' @examples
-
 
 agify<-function(name,
                 country_id=NULL,
@@ -37,17 +33,15 @@ agify<-function(name,
 
 #' @title Genderize function
 #' @description Returns the estimated gender from a given name.
-#' @param name
-#' @param country_id
-#' @param simplify
-#' @param apikey
-#' @param meta
-#'
-#' @return
+#' @param name Name/s to evaluate from. Can be a single string or a vector.
+#' @param country_id Optional parameter to estimate for a specific country. ISO2 code countrycode.
+#' @param simplify Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
+#' By default set to \code{TRUE}, which returns a vector.
+#' @param apikey API KEY from \href{https://genderize.io/}{Genderize.io}.
+#' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
+#' @return The estimated nationality in a single character vector form or a \code{data.frame} with additional information (e.g. probability).
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @export
-#'
-#' @examples
 
 genderize<-function(name,
                     country_id=NULL,
@@ -73,16 +67,17 @@ genderize<-function(name,
 
 #' @title Nationalize function
 #' @description Returns the estimated nationality from a given name.
-#' @param name
-#' @param simplify
-#' @param sliced
-#' @param apikey
-#' @param meta
-#' @return
+#' @param name Name/s to evaluate from. Can be a single string or a vector.
+#' @param simplify Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
+#' By default set to \code{TRUE}, which returns a vector.
+#' @param sliced Names can have multiple estimated countries ranked by probabilty. This logical parameter allows to "slice"/keep only
+#' the parameter with the highest probability to keep a single estimate for each name.
+#' @param apikey API KEY from \href{https://nationalize.io/}{Nationalize.io}.
+#' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
+#' @return The estimated nationality in a single character vector form or a \code{data.frame} with additional information (e.g. probability).
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @export
-#'
-#' @examples
+
 
 nationalize<-function(name,
                       simplify=TRUE,
@@ -119,11 +114,11 @@ nationalize<-function(name,
 #' }
 #' @param type Must be one of the following:
 #' \itemize{
-#' \item \code{gender} -
-#' \item \code{age} -
-#' \item \code{nationality} -
+#' \item \code{gender} - Genderize.io key
+#' \item \code{age} - Agify.io key
+#' \item \code{nationality} - Nationalize.io key
 #' }
-#' @return
+#' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @examples
 #' \dontrun{
@@ -141,14 +136,21 @@ save_key <- function(key, type){
 }
 
 #' @title Removes saved key
-#' @description
-#' @param key
-#' @param type
-#' @return
+#' @description Removes saved keys for the DemografixeR APIs (Genderize.io, Agify.io, Nationalize.io)
+#' @param type Choose the type of key to remove from the environment variables:
+#' \itemize{
+#' \item \code{gender} - Genderize.io key
+#' \item \code{age} - Agify.io key
+#' \item \code{nationality} - Nationalize.io key
+#' }
+#' @param verbose Logical parameter to define if a verbose message should be shown.
+#' @return Does not return any object
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @examples
 #' \dontrun{
-#' save_key(key="__YOUR_API_KEY__", type="gender")
+#' remove_key(type="gender")
+#' remove_key(type="age")
+#' remove_key(type="nationality")
 #' }
 #' @export
 
@@ -163,15 +165,6 @@ remove_key<-function(type, verbose=TRUE){
     }
 }
 
-#' @title Error code messages
-#' @description
-#' @param status
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
-
 api_response<-function(status){
   response<-switch(as.character(status),
             "200"="Success! Everything is OK",
@@ -185,17 +178,6 @@ api_response<-function(status){
   return(response)
 }
 
-
-#' @title Adds ID when not null
-#' @description
-#' @param x
-#' @param n
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
-
 add_id<-function(x, n){
   if(nrow(x)>0){
     x$id<-n
@@ -203,34 +185,12 @@ add_id<-function(x, n){
   }
 }
 
-#' @title Transforms NULL and empty lists to NA
-#' @description
-#' @param x
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
-
 null_to_NA<-function(x){
   if(is.null(x)||!length(x)){
     x<-NA
   }
   return(x)
 }
-
-#' @title
-#' @description
-#' @param x
-#' @param type
-#' @param country_id
-#' @param apikey
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
-
 
 api_request<-function(x, type, country_id=NULL,sliced=TRUE, apikey=NULL){
   #Define service to call
@@ -244,7 +204,7 @@ api_request<-function(x, type, country_id=NULL,sliced=TRUE, apikey=NULL){
     country_id<-NULL
   }
   #Keep unique values to ensure duplicated requests are not made & remove whitespace
-  names_param<-setNames(as.list(x), rep("name", length(x)))
+  names_param<-stats::setNames(as.list(x), rep("name", length(x)))
   #Add optional parameters for country & apikey
   query<-c(names_param, list(country_id=country_id), list(apikey=apikey))
   #Bring everything together defining GET url
@@ -288,32 +248,18 @@ api_request<-function(x, type, country_id=NULL,sliced=TRUE, apikey=NULL){
     merge_list<-mapply(add_id, content[,is_list], base_content$id, SIMPLIFY = FALSE)
     #Slice first row only if not expanded
     if(sliced){
-      merge_list<-lapply(merge_list,head, 1)
+      merge_list<-lapply(merge_list, utils::head, 1)
     }
     merge_content<-do.call(rbind, merge_list[lengths(merge_list)>0])
     content<-merge(base_content,merge_content, by="id", all.x = TRUE)
     content$id<-NULL
     }else if(sliced && length(x)==1 && nrow(content)>1){
-      content<-head(content, 1)
+      content<-utils::head(content, 1)
   }
   cols<-colnames(content)
   colnames(content)<-gsub(".*\\.", "", cols)
   return(content)
 }
-
-
-
-#' @title
-#' @description
-#' @param input
-#' @param type
-#' @param sliced
-#' @param apikey
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
 
 sequencer<-function(input, type, sliced=TRUE, apikey=NULL){
   x<-input$x
@@ -332,20 +278,6 @@ sequencer<-function(input, type, sliced=TRUE, apikey=NULL){
   df<-merge.data.frame(df, content, by="name", all.x= TRUE)
   return(df)
 }
-
-
-#' @title
-#' @description
-#' @param x
-#' @param type
-#' @param country_id
-#' @param sliced
-#' @param apikey
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
 
 country_distributor<-function(x, type, country_id=NULL, sliced=TRUE, apikey=NULL){
   if(!is.null(country_id)){
@@ -367,15 +299,6 @@ country_distributor<-function(x, type, country_id=NULL, sliced=TRUE, apikey=NULL
   return(res)
 }
 
-#' @title Base \code{rbindlist(fill=TRUE)} function
-#' @description
-#' @param l
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
-
 rbind_fill<-function(l){
   r<-unique(unlist(lapply(l, nrow)))
   l<-l[r>0]
@@ -383,16 +306,6 @@ rbind_fill<-function(l){
   res<-do.call(rbind, lapply(l, fill_df_NAs, cols))
   return(res)
 }
-
-#' @title Helper function for the \code{rbind_fill(TRUE)} function
-#' @description
-#' @param x
-#' @param cols
-#' @return
-#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @keywords internal
-#' @section Warning:
-#' Internal function
 
 fill_df_NAs<-function(x, cols){
   x_cols<-names(x)
