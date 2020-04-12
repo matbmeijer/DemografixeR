@@ -19,3 +19,5 @@
 ^documentation_file\.R$
 ^cran-comments\.md$
 
+^_pkgdown\.yml$
+^docs$
