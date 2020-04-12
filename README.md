@@ -13,6 +13,11 @@ DemografixeR is an API wrapper of all 3 Demografix API’s - all in one:
   - <https://agify.io/>
   - <https://nationalize.io/>
 
+## Documentation
+
+You can find all the necessary documentation here:
+<https://matbmeijer.github.io/DemografixeR/>
+
 ## Installation
 
 You can install the released version of DemografixeR from
