@@ -25,31 +25,21 @@ devtools::install_github("matbmeijer/DemografixeR")
 
 ## Example
 
-This is a basic example which shows you how to estimate nationality,
-gender and age by a given name:
+This is a basic example which shows you how to estimate **nationality**,
+**gender** and **age** by a given name:
 
 ``` r
 library(DemografixeR)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-library(knitr)
 
 df<-data.frame(names=c("Ana", NA, "Pedro",
                        "Francisco", "Maria", "Elena"),
                  country=c(NA, NA, "ES",
                            "DE", "ES", "NL"), stringsAsFactors = FALSE)
 
-df %>% mutate(guessed_nationality=nationalize(name = names),
+df %>% dplyr::mutate(guessed_nationality=nationalize(name = names),
                 guessed_gender=genderize(name = names, country_id = country),
                 guessed_age=agify(name = names, country_id = country)) %>% 
-  kable()
+  knitr::kable()
 ```
 
 | names     | country | guessed\_nationality | guessed\_gender | guessed\_age |

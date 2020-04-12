@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_structure.R
 \name{genderize}
 \alias{genderize}
-\title{Genderize function}
+\title{"Genderize" function}
 \usage{
 genderize(
   name,
@@ -13,22 +13,47 @@ genderize(
 )
 }
 \arguments{
-\item{name}{Name/s to evaluate from. Can be a single string or a vector.}
+\item{name}{Name/s to estimate the gender. Can be a single \code{character} string or a \code{character} vector.}
 
-\item{country_id}{Optional parameter to estimate for a specific country. ISO2 code countrycode.}
+\item{country_id}{Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
+This optional parameter allows to specify a specific country. The API follows the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code convention.
+To see a list of the supported countries visit the following \href{https://genderize.io/our-data}{link}.}
 
 \item{simplify}{Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
-By default set to \code{TRUE}, which returns a vector.}
+By default set to \code{TRUE}, which returns a vector. If set to \code{TRUE}, it will include additional information about:
+\itemize{
+\item The probability indicates the certainty of the assigned gender. Basically the ratio of male to females.
+\item The count represents the number of data rows examined in order to calculate the response.
+}}
 
-\item{apikey}{API KEY from \href{https://genderize.io/}{Genderize.io}.}
+\item{apikey}{Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
+Yet, if more requests would be needed, visit the \href{https://store.genderize.io/}{genderize.io store} and the obtained API key can be passed through this parameter.}
 
-\item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.}
+\item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
+Returns information about:
+\itemize{
+\item The amount of names available in the current time window
+\item The number of names left in the current time window
+\item Seconds remaining until a new time window opens
+}}
 }
 \value{
-The estimated nationality in a single character vector form or a \code{data.frame} with additional information (e.g. probability).
+The estimated age in a single \code{character} vector form or a \code{data.frame} with additional information.
 }
 \description{
-Returns the estimated gender from a given name.
+Connects directly to the \href{https://genderize.io/}{genderize.io API} to return the predicted gender of a name.
+}
+\details{
+The function automatically handles pagination (max. 10 names per API request), missing values & duplicated values.
+If a name is duplicated for the same \code{country_id} (if given), it will handle the request as a a single name to save requests, returning the same value for the duplicated names.
+}
+\section{Warning}{
+
+Please be aware about local privacy protection regulations such as \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR} when dealing with personal data.
+}
+
+\examples{
+genderize(name=c("Ben", "Maria"))
 }
 \author{
 Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}

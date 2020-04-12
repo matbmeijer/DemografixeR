@@ -1,12 +1,15 @@
 Package: DemografixeR
-Type: Package
-Title: What the Package Does (Title Case)
+Title: genderize.io, agify.io & nationalize.io APIs R wrapper - all in one
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: 
+    person(given = "Matthias",
+           family = "Brenninkmeijer",
+           role = c("aut", "cre"),
+           email = "matthias@brennotten.net")
+Description: Connects to the genderize.io, agify.io & nationalize.io APIs to
+    estimate gender, age and nationality based on a given name.
 License: MIT + file LICENSE
+URL: https://github.com/matbmeijer/DemografixeR
 Encoding: UTF-8
 LazyData: true
 Imports: 
