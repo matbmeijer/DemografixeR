@@ -7,6 +7,8 @@
 
 [![Travis build
 status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https://travis-ci.org/matbmeijer/DemografixeR)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
 DemografixeR is an API wrapper of all 3 Demografix API’s - all in one:
@@ -85,10 +87,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  813 |            44213 | 2020-04-13 11:43:07     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  813 |            44213 | 2020-04-13 11:43:07     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  813 |            44213 | 2020-04-13 11:43:07     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  813 |            44213 | 2020-04-13 11:43:07     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  766 |            43756 | 2020-04-13 11:50:43     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  766 |            43756 | 2020-04-13 11:50:43     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  766 |            43756 | 2020-04-13 11:50:43     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  766 |            43756 | 2020-04-13 11:50:43     |
 
 Please note that the ‘DemografixeR’ project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
