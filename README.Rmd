@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # DemografixeR
 
 <!-- badges: start -->
+[![Travis build status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https://travis-ci.org/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
 DemografixeR is an API wrapper of all 3 Demografix API's - all in one:
