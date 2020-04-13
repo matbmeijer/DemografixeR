@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • DemografixeR</title>
+<title>Retrieve the supported countries for each API — supported_countries • DemografixeR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Retrieve the supported countries for each API — supported_countries" />
+<meta property="og:description" content="Scrapes the API websites to retrieve an updated list of supported countries for each API." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -110,28 +111,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Retrieve the supported countries for each API</h1>
+    <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/api_structure.R'><code>R/api_structure.R</code></a></small>
+    <div class="hidden name"><code>supported_countries.Rd</code></div>
     </div>
 
-    <div id="demografixer-0-1-0" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#demografixer-0-1-0" class="anchor"></a>DemografixeR 0.1.0</h1>
-<ul>
-<li>Added API key handling functions so the key has to be defined only one time.</li>
-<li>Added <code><a href="../reference/supported_countries.html">supported_countries()</a></code> function to retrieve the supported countries.</li>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-<li>Added a website at <a href="https://matbmeijer.github.io/DemografixeR/" class="uri">https://matbmeijer.github.io/DemografixeR/</a> for betther documentation.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Scrapes the API websites to retrieve an updated list of supported countries for each API.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>supported_countries</span>(<span class='no'>type</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>type</th>
+      <td><p>Obligatory parameter to define the API from which to obtain the supported countries.
+Must be one of the following <code>character</code> strings:</p><ul>
+<li><p><code>genderize</code> - Available countries for the Genderize.io API.</p></li>
+<li><p><code>agify</code> - Available countries for the Agify.io API.</p></li>
+<li><p><code>nationalize</code> - Available countries for the Nationalize.io API.</p></li>
+</ul></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns a <code>data.frame</code> with the supported <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a> country code, country name the number of items (names) for each country.</p>
+    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
+
+    
+
+<p>Please be conscious that this function directly scrapes the website, do not overuse it as it might overwhelm the server.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>supported_countries</span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"genderize"</span>)
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

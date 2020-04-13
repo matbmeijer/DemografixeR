@@ -4,7 +4,13 @@
 \alias{nationalize}
 \title{"Nationalize" function}
 \usage{
-nationalize(name, simplify = TRUE, sliced = TRUE, apikey = NULL, meta = FALSE)
+nationalize(
+  name,
+  simplify = TRUE,
+  sliced = TRUE,
+  apikey = get_key("genderize"),
+  meta = FALSE
+)
 }
 \arguments{
 \item{name}{Name/s to estimate the nationality. Can be a single \code{character} string or a \code{character} vector.}
@@ -16,7 +22,8 @@ By default set to \code{TRUE}, which returns a vector.}
 the parameter with the highest probability to keep a single estimate for each name.}
 
 \item{apikey}{Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the \href{https://store.nationalize.io/}{nationalize.io store} and the obtained API key can be passed through this parameter.}
+Yet, if more requests would be needed, visit the \href{https://store.nationalize.io/}{nationalize.io store} and the obtained API key can be passed through this parameter.
+The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.}
 
 \item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
 Returns information about:

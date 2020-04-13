@@ -120,7 +120,13 @@
     <p>Connects directly to the <a href='https://agify.io/'>agify.io API</a> to return the predicted age of a name.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>agify</span>(<span class='no'>name</span>, <span class='kw'>country_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>agify</span>(
+  <span class='no'>name</span>,
+  <span class='kw'>country_id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='fu'><a href='get_key.html'>get_key</a></span>(<span class='st'>"agify"</span>),
+  <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -133,7 +139,7 @@
       <th>country_id</th>
       <td><p>Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
 This optional parameter allows to specify a specific country. The API follows the common <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a> country code convention.
-To see a list of the supported countries visit the following <a href='https://agify.io/our-data'>link</a>.</p></td>
+To see a list of the supported countries use the <code><a href='supported_countries.html'>supported_countries()</a></code> function or visit the following <a href='https://agify.io/our-data'>link</a>.</p></td>
     </tr>
     <tr>
       <th>simplify</th>
@@ -143,7 +149,8 @@ By default set to <code>TRUE</code>, which returns a vector.</p></td>
     <tr>
       <th>apikey</th>
       <td><p>Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the <a href='https://store.agify.io/'>agify.io store</a> and the obtained API key can be passed through this parameter.</p></td>
+Yet, if more requests would be needed, visit the <a href='https://store.agify.io/'>agify.io store</a> and the obtained API key can be passed through this parameter.
+The API can also be saved one time through the <code><a href='save_key.html'>save_key()</a></code> function, so it is not necessary to call again.</p></td>
     </tr>
     <tr>
       <th>meta</th>

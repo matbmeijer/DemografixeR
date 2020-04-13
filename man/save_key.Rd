@@ -16,20 +16,26 @@ save_key(key, type)
 
 \item{type}{Must be one of the following:
 \itemize{
-\item \code{gender} - Genderize.io key
-\item \code{age} - Agify.io key
-\item \code{nationality} - Nationalize.io key
+\item \code{genderize} - Genderize.io API key
+\item \code{agify} - Agify.io API key
+\item \code{nationalize} - Nationalize.io API key
 }}
 }
 \value{
 Does save the key in the environment.
 }
 \description{
-Saves the key from the in the users environment as .
+Saves the key from the in the users environment.
 It has the advantage that it is not necessary to explicitly publish the key in the users code.
 Just do it one time and you're set. To update the key kust save again and it will overwrite the old key.
+To explictly printing the key, use the \code{get_key()} function.
 To remove the key use the \code{remove_key()} function.
 }
+\section{Warning}{
+
+Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
+}
+
 \examples{
 \dontrun{
 save_key(key="__YOUR_API_KEY__", type="gender")

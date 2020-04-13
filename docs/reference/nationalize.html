@@ -120,7 +120,13 @@
     <p>Returns the estimated nationality from a given name.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nationalize</span>(<span class='no'>name</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sliced</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>nationalize</span>(
+  <span class='no'>name</span>,
+  <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>sliced</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='fu'><a href='get_key.html'>get_key</a></span>(<span class='st'>"genderize"</span>),
+  <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,7 +148,8 @@ the parameter with the highest probability to keep a single estimate for each na
     <tr>
       <th>apikey</th>
       <td><p>Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the <a href='https://store.nationalize.io/'>nationalize.io store</a> and the obtained API key can be passed through this parameter.</p></td>
+Yet, if more requests would be needed, visit the <a href='https://store.nationalize.io/'>nationalize.io store</a> and the obtained API key can be passed through this parameter.
+The API can also be saved one time through the <code><a href='save_key.html'>save_key()</a></code> function, so it is not necessary to call again.</p></td>
     </tr>
     <tr>
       <th>meta</th>

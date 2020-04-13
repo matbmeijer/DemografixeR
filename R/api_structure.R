@@ -3,11 +3,12 @@
 #' @param name Name/s to estimate the age. Can be a single \code{character} string or a \code{character} vector.
 #' @param country_id Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
 #' This optional parameter allows to specify a specific country. The API follows the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code convention.
-#' To see a list of the supported countries visit the following \href{https://agify.io/our-data}{link}.
+#' To see a list of the supported countries use the \code{supported_countries()} function or visit the following \href{https://agify.io/our-data}{link}.
 #' @param simplify Logical parameter, which defines if the result should be returned as a \code{character} vector or a \code{data.frame} with additional information.
 #' By default set to \code{TRUE}, which returns a vector.
 #' @param apikey Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
 #' Yet, if more requests would be needed, visit the \href{https://store.agify.io/}{agify.io store} and the obtained API key can be passed through this parameter.
+#' The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.
 #' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
 #' Returns information about:
 #' \itemize{
@@ -28,7 +29,7 @@
 agify<-function(name,
                 country_id=NULL,
                 simplify=TRUE,
-                apikey=NULL,
+                apikey=get_key("agify"),
                 meta=FALSE){
   y<-country_distributor(x=name,
                           type="age",
@@ -51,7 +52,7 @@ agify<-function(name,
 #' @param name Name/s to estimate the gender. Can be a single \code{character} string or a \code{character} vector.
 #' @param country_id Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
 #' This optional parameter allows to specify a specific country. The API follows the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code convention.
-#' To see a list of the supported countries visit the following \href{https://genderize.io/our-data}{link}.
+#' To see a list of the supported countries use the \code{supported_countries()} function or visit the following \href{https://genderize.io/our-data}{link}.
 #' @param simplify Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
 #' By default set to \code{TRUE}, which returns a vector. If set to \code{TRUE}, it will include additional information about:
 #' \itemize{
@@ -60,6 +61,7 @@ agify<-function(name,
 #' }
 #' @param apikey Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
 #' Yet, if more requests would be needed, visit the \href{https://store.genderize.io/}{genderize.io store} and the obtained API key can be passed through this parameter.
+#' The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.
 #' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
 #' Returns information about:
 #' \itemize{
@@ -80,7 +82,7 @@ agify<-function(name,
 genderize<-function(name,
                     country_id=NULL,
                     simplify=TRUE,
-                    apikey=NULL,
+                    apikey=get_key("genderize"),
                     meta=FALSE){
   y<-country_distributor(x=name,
                          type="gender",
@@ -108,6 +110,7 @@ genderize<-function(name,
 #' the parameter with the highest probability to keep a single estimate for each name.
 #' @param apikey Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
 #' Yet, if more requests would be needed, visit the \href{https://store.nationalize.io/}{nationalize.io store} and the obtained API key can be passed through this parameter.
+#' The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.
 #' @param meta Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
 #' Returns information about:
 #' \itemize{
@@ -129,13 +132,13 @@ genderize<-function(name,
 nationalize<-function(name,
                       simplify=TRUE,
                       sliced=TRUE,
-                      apikey=NULL,
+                      apikey=get_key("genderize"),
                       meta=FALSE){
   y<-country_distributor(x=name,
                          type="nationality",
                          country_id=NULL,
                          sliced=sliced,
-                         apikey=apikey)
+                         apikey=get_key("nationalize"))
   if(simplify){
     y<-y$country_id
   }else{
@@ -148,6 +151,24 @@ nationalize<-function(name,
 }
 
 
+#' @title Retrieve the supported countries for each API
+#' @description Scrapes the API websites to retrieve an updated list of supported countries for each API.
+#' @param type Obligatory parameter to define the API from which to obtain the supported countries.
+#' Must be one of the following \code{character} strings:
+#' \itemize{
+#' \item \code{genderize} - Available countries for the Genderize.io API.
+#' \item \code{agify} - Available countries for the Agify.io API.
+#' \item \code{nationalize} - Available countries for the Nationalize.io API.
+#' }
+#' @return Returns a \code{data.frame} with the supported \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code, country name the number of items (names) for each country.
+#' @section Warning:
+#' Please be conscious that this function directly scrapes the website, do not overuse it as it might overwhelm the server.
+#' @examples
+#' \dontrun{
+#' supported_countries(type="genderize")
+#' }
+#' @export
+
 supported_countries<-function(type){
   url<-switch(type,
               "genderize"="https://genderize.io/js/Genderize.js",
@@ -157,18 +178,19 @@ supported_countries<-function(type){
   char<-strsplit(char, split = ";")[[1]]
   char<-char[grepl("ISO Code", char)]
   char<-gsub("^.*f=|(}])},function.*", "\\1", char)
-  char1<-gsub("\\{country_id\\:", '{"country_id":', char)
-  char2<-gsub("\\,total\\:", ',"total":', char1)
-  char3<-gsub("\\,name\\:", ',"name":', char2)
-  df<-jsonlite::fromJSON(char3)
+  char<-gsub("\\{country_id\\:", '{"country_id":', char)
+  char<-gsub("\\,total\\:", ',"total":', char)
+  char<-gsub("\\,name\\:", ',"name":', char)
+  df<-jsonlite::fromJSON(char)
   return(df)
 }
 
 
 #' @title Saves the key for future functions
-#' @description Saves the key from the in the users environment as .
+#' @description Saves the key from the in the users environment.
 #' It has the advantage that it is not necessary to explicitly publish the key in the users code.
 #' Just do it one time and you're set. To update the key kust save again and it will overwrite the old key.
+#' To explictly printing the key, use the \code{get_key()} function.
 #' To remove the key use the \code{remove_key()} function.
 #' @param key Key obtained from the specific website.Must be one of the following:
 #' \itemize{
@@ -178,12 +200,14 @@ supported_countries<-function(type){
 #' }
 #' @param type Must be one of the following:
 #' \itemize{
-#' \item \code{gender} - Genderize.io key
-#' \item \code{age} - Agify.io key
-#' \item \code{nationality} - Nationalize.io key
+#' \item \code{genderize} - Genderize.io API key
+#' \item \code{agify} - Agify.io API key
+#' \item \code{nationalize} - Nationalize.io API key
 #' }
 #' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @section Warning:
+#' Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
 #' save_key(key="__YOUR_API_KEY__", type="gender")
@@ -192,37 +216,73 @@ supported_countries<-function(type){
 
 save_key <- function(key, type){
   env_name<-switch(type,
-              "gender"="GENDERIZE_KEY_PAT",
-              "age" = "AGIFY_KEY_PAT",
-              "nationality"="NATIONALIZE_KEY_PAT")
+              "genderize"="GENDERIZE_KEY_PAT",
+              "agify" = "AGIFY_KEY_PAT",
+              "nationalize"="NATIONALIZE_KEY_PAT")
   names(key)<-env_name
   Sys.setenv(key)
+}
+
+#' @title Get previously saved API keys
+#' @description Function to get the previously saved API key. It has the advantage that it is not necessary to explicitly publish the key in the users code.
+#' Just do it one time and you're set. To save an API, use the \code{save_key()} function.
+#' To remove a previously saved key, use the \code{remove_key()} function.
+#' @param type Obligatory parameter to define which key to retrieve:
+#' \itemize{
+#' \item \code{genderize} - Genderize.io API key
+#' \item \code{agify} - Agify.io API key
+#' \item \code{nationalize} - Nationalize.io API key
+#' }
+#' @return Returns the saved API key in the environment. If no API key has been saved, returns \code{NULL} value.
+#' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @section Warning:
+#' Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
+#' @examples
+#' \dontrun{
+#' get_key(type="genderize")
+#' get_key(type="agify")
+#' get_key(type="nationalize")
+#' }
+#' @export
+
+get_key<-function(type){
+  env_name<-switch(type,
+                   "genderize"="GENDERIZE_KEY_PAT",
+                   "agify" = "AGIFY_KEY_PAT",
+                   "nationalize"="NATIONALIZE_KEY_PAT")
+  key<-Sys.getenv(env_name, NA)
+  if(is.na(key)){
+    key<-NULL
+  }
+  return(key)
 }
 
 #' @title Removes saved key
 #' @description Removes saved keys for the DemografixeR APIs (Genderize.io, Agify.io, Nationalize.io)
 #' @param type Choose the type of key to remove from the environment variables:
 #' \itemize{
-#' \item \code{gender} - Genderize.io key
-#' \item \code{age} - Agify.io key
-#' \item \code{nationality} - Nationalize.io key
+#' \item \code{genderize} - Genderize.io API key
+#' \item \code{agify} - Agify.io API key
+#' \item \code{nationalize} - Nationalize.io API key
 #' }
-#' @param verbose Logical parameter to define if a verbose message should be shown.
-#' @return Does not return any object
+#' @param verbose Logical parameter to define if a verbose message should be printed.
+#' @return Does not return any object.
 #' @author Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @section Warning:
+#' Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' remove_key(type="gender")
-#' remove_key(type="age")
-#' remove_key(type="nationality")
+#' remove_key(type="genderize")
+#' remove_key(type="agify")
+#' remove_key(type="nationalize")
 #' }
 #' @export
 
 remove_key<-function(type, verbose=TRUE){
   env_name<-switch(type,
-                   "gender"="GENDERIZE_KEY_PAT",
-                   "age" = "AGIFY_KEY_PAT",
-                   "nationality"="NATIONALIZE_KEY_PAT")
+                   "genderize"="GENDERIZE_KEY_PAT",
+                   "agify" = "AGIFY_KEY_PAT",
+                   "nationalize"="NATIONALIZE_KEY_PAT")
   Sys.unsetenv(env_name)
   if(verbose){
       cat(sprintf("< %s key saved at environment as %s has been removed >",type, env_name ))

@@ -8,7 +8,7 @@ genderize(
   name,
   country_id = NULL,
   simplify = TRUE,
-  apikey = NULL,
+  apikey = get_key("genderize"),
   meta = FALSE
 )
 }
@@ -17,7 +17,7 @@ genderize(
 
 \item{country_id}{Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
 This optional parameter allows to specify a specific country. The API follows the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code convention.
-To see a list of the supported countries visit the following \href{https://genderize.io/our-data}{link}.}
+To see a list of the supported countries use the \code{supported_countries()} function or visit the following \href{https://genderize.io/our-data}{link}.}
 
 \item{simplify}{Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
 By default set to \code{TRUE}, which returns a vector. If set to \code{TRUE}, it will include additional information about:
@@ -27,7 +27,8 @@ By default set to \code{TRUE}, which returns a vector. If set to \code{TRUE}, it
 }}
 
 \item{apikey}{Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the \href{https://store.genderize.io/}{genderize.io store} and the obtained API key can be passed through this parameter.}
+Yet, if more requests would be needed, visit the \href{https://store.genderize.io/}{genderize.io store} and the obtained API key can be passed through this parameter.
+The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.}
 
 \item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
 Returns information about:

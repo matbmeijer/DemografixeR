@@ -9,24 +9,29 @@ remove_key(type, verbose = TRUE)
 \arguments{
 \item{type}{Choose the type of key to remove from the environment variables:
 \itemize{
-\item \code{gender} - Genderize.io key
-\item \code{age} - Agify.io key
-\item \code{nationality} - Nationalize.io key
+\item \code{genderize} - Genderize.io API key
+\item \code{agify} - Agify.io API key
+\item \code{nationalize} - Nationalize.io API key
 }}
 
-\item{verbose}{Logical parameter to define if a verbose message should be shown.}
+\item{verbose}{Logical parameter to define if a verbose message should be printed.}
 }
 \value{
-Does not return any object
+Does not return any object.
 }
 \description{
 Removes saved keys for the DemografixeR APIs (Genderize.io, Agify.io, Nationalize.io)
 }
+\section{Warning}{
+
+Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
+}
+
 \examples{
 \dontrun{
-remove_key(type="gender")
-remove_key(type="age")
-remove_key(type="nationality")
+remove_key(type="genderize")
+remove_key(type="agify")
+remove_key(type="nationalize")
 }
 }
 \author{
