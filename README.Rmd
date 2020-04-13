@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
-DemografixeR is an API wrapper of all 3 Demografix API's - all in one:
+DemografixeR is an API wrapper of all 3 Demografix API's - all three APIs supported in one package:
 
 * [https://genderize.io/](https://genderize.io/) - **Gender estimation** based on a name
 * [https://agify.io/](https://agify.io/) - **Age estimation** based on a name
@@ -28,12 +28,12 @@ DemografixeR is an API wrapper of all 3 Demografix API's - all in one:
 
 ## Documentation
 
-You can find all the necessary documentation here:
+You can find all the necessary documentation about the package here:
 [https://matbmeijer.github.io/DemografixeR/](https://matbmeijer.github.io/DemografixeR/)
 
 ## Installation
 
-You can install the released version of DemografixeR from [CRAN](https://CRAN.R-project.org) with:
+You can install the released version of DemografixeR following the next commands:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
