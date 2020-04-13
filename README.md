@@ -55,3 +55,7 @@ df %>% dplyr::mutate(guessed_nationality=nationalize(name = names),
 | Francisco | DE      | CL                   | male            |           58 |
 | Maria     | ES      | CY                   | NA              |           59 |
 | Elena     | NL      | CC                   | female          |           69 |
+
+Please note that the ‘DemografixeR’ project is released with a
+[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
+this project, you agree to abide by its terms.
