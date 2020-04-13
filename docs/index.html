@@ -77,9 +77,12 @@
 <!-- badges: end -->
 <p>DemografixeR is an API wrapper of all 3 Demografix API’s - all in one:</p>
 <ul>
-<li><a href="https://genderize.io/" class="uri">https://genderize.io/</a></li>
-<li><a href="https://agify.io/" class="uri">https://agify.io/</a></li>
-<li><a href="https://nationalize.io/" class="uri">https://nationalize.io/</a></li>
+<li>
+<a href="https://genderize.io/" class="uri">https://genderize.io/</a> - <strong>Gender estimation</strong> based on a name</li>
+<li>
+<a href="https://agify.io/" class="uri">https://agify.io/</a> - <strong>Age estimation</strong> based on a name</li>
+<li>
+<a href="https://nationalize.io/" class="uri">https://nationalize.io/</a> - <strong>Nationality estimation</strong> based on a name</li>
 </ul>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
@@ -93,12 +96,28 @@
 <div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="st">"devtools"</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"matbmeijer/DemografixeR"</span>)</pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to estimate <strong>nationality</strong>, <strong>gender</strong> and <strong>age</strong> by a given name:</p>
+<a href="#examples" class="anchor"></a>Examples</h2>
+<p>These are basic examples which shows you how to estimate <strong>nationality</strong>, <strong>gender</strong> and <strong>age</strong> by a given name with &amp; without specifying a country. It also shows that the functions are able to deal with missing values:</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DemografixeR</span>)
 
+<span class="co">#Simple example without country_id</span>
+<span class="no">names</span><span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ben"</span>, <span class="st">"Allister"</span>, <span class="st">"Lucie"</span>, <span class="st">"Paula"</span>)
+<span class="fu"><a href="reference/genderize.html">genderize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>)
+<span class="co">#&gt; [1] "male"   "male"   "female" "female"</span>
+<span class="fu"><a href="reference/nationalize.html">nationalize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>)
+<span class="co">#&gt; [1] "AU" "ZA" "CZ" "PT"</span>
+<span class="fu"><a href="reference/agify.html">agify</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>)
+<span class="co">#&gt; [1] 48 44 24 50</span>
+
+<span class="co">#Simple example with</span>
+<span class="fu"><a href="reference/genderize.html">genderize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>, <span class="kw">country_id</span> <span class="kw">=</span> <span class="st">"US"</span>)
+<span class="co">#&gt; [1] "male"   "male"   "female" "female"</span>
+<span class="fu"><a href="reference/agify.html">agify</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>, <span class="kw">country_id</span> <span class="kw">=</span> <span class="st">"US"</span>)
+<span class="co">#&gt; [1] 67 46 65 70</span>
+
+<span class="co">#Workflow example with dplyr with missing values and multiple different countries</span>
 <span class="no">df</span><span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">names</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ana"</span>, <span class="fl">NA</span>, <span class="st">"Pedro"</span>,
                        <span class="st">"Francisco"</span>, <span class="st">"Maria"</span>, <span class="st">"Elena"</span>),
                  <span class="kw">country</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">NA</span>, <span class="fl">NA</span>, <span class="st">"ES"</span>,
@@ -161,6 +180,85 @@
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb3"><pre class="r">
+<span class="co">#Detailed data.frame example:</span>
+<span class="fu"><a href="reference/genderize.html">genderize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">names</span>, <span class="kw">simplify</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">meta</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span> <span class="kw pkg">knitr</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>()</pre></div>
+<table class="table">
+<colgroup>
+<col width="0%">
+<col width="7%">
+<col width="5%">
+<col width="5%">
+<col width="9%">
+<col width="4%">
+<col width="14%">
+<col width="17%">
+<col width="14%">
+<col width="20%">
+</colgroup>
+<thead><tr class="header">
+<th></th>
+<th align="left">name</th>
+<th align="left">type</th>
+<th align="left">gender</th>
+<th align="right">probability</th>
+<th align="right">count</th>
+<th align="right">api_rate_limit</th>
+<th align="right">api_rate_remaining</th>
+<th align="right">api_rate_reset</th>
+<th align="left">api_request_timestamp</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td align="left">Ben</td>
+<td align="left">gender</td>
+<td align="left">male</td>
+<td align="right">0.95</td>
+<td align="right">77991</td>
+<td align="right">1000</td>
+<td align="right">866</td>
+<td align="right">44724</td>
+<td align="left">2020-04-13 11:34:36</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td align="left">Allister</td>
+<td align="left">gender</td>
+<td align="left">male</td>
+<td align="right">0.98</td>
+<td align="right">129</td>
+<td align="right">1000</td>
+<td align="right">866</td>
+<td align="right">44724</td>
+<td align="left">2020-04-13 11:34:36</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="left">Lucie</td>
+<td align="left">gender</td>
+<td align="left">female</td>
+<td align="right">0.99</td>
+<td align="right">85580</td>
+<td align="right">1000</td>
+<td align="right">866</td>
+<td align="right">44724</td>
+<td align="left">2020-04-13 11:34:36</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td align="left">Paula</td>
+<td align="left">gender</td>
+<td align="left">female</td>
+<td align="right">0.98</td>
+<td align="right">74130</td>
+<td align="right">1000</td>
+<td align="right">866</td>
+<td align="right">44724</td>
+<td align="left">2020-04-13 11:34:36</td>
+</tr>
+</tbody>
+</table>
 <p>Please note that the ‘DemografixeR’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -184,6 +282,7 @@
 <div class="community">
 <h2>Community</h2>
 <ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>

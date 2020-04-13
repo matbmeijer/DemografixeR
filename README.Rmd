@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 
 DemografixeR is an API wrapper of all 3 Demografix API's - all in one:
 
-* [https://genderize.io/](https://genderize.io/)
-* [https://agify.io/](https://agify.io/)
-* [https://nationalize.io/](https://nationalize.io/)
+* [https://genderize.io/](https://genderize.io/) - **Gender estimation** based on a name
+* [https://agify.io/](https://agify.io/) - **Age estimation** based on a name
+* [https://nationalize.io/](https://nationalize.io/) - **Nationality estimation** based on a name
 
 ## Documentation
 
@@ -38,13 +38,24 @@ if (!require("devtools")) install.packages("devtools")
 devtools::install_github("matbmeijer/DemografixeR")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to estimate **nationality**, **gender** and **age** by a given name:
+These are basic examples which shows you how to estimate **nationality**, **gender** and **age** by a given name with & without specifying a country. It also shows that the functions are able to deal with missing values:
 
 ```{r example}
 library(DemografixeR)
 
+#Simple example without country_id
+names<-c("Ben", "Allister", "Lucie", "Paula")
+genderize(name = names)
+nationalize(name = names)
+agify(name = names)
+
+#Simple example with
+genderize(name = names, country_id = "US")
+agify(name = names, country_id = "US")
+
+#Workflow example with dplyr with missing values and multiple different countries
 df<-data.frame(names=c("Ana", NA, "Pedro",
                        "Francisco", "Maria", "Elena"),
                  country=c(NA, NA, "ES",
@@ -55,6 +66,8 @@ df %>% dplyr::mutate(guessed_nationality=nationalize(name = names),
                 guessed_age=agify(name = names, country_id = country)) %>% 
   knitr::kable()
 
+#Detailed data.frame example:
+genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 ```
 
