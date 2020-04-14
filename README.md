@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# DemografixeR
+# DemografixeR<img src="man/figures/logo.png" align="right" height=140/>
 
 <!-- badges: start -->
 
@@ -100,10 +100,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
 
 ## Disclaimer
 
