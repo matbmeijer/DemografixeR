@@ -1,5 +1,5 @@
 Package: DemografixeR
-Title: genderize.io, agify.io & nationalize.io APIs R wrapper - all in one
+Title: Estimate gender, age nationality from a name. API wrapper for the genderize.io, agify.io & nationalize.io APIs
 Version: 0.1.0
 Authors@R: 
     person(given = "Matthias",

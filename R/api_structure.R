@@ -230,9 +230,19 @@ supported_countries <- function(type) {
                 "genderize" = "https://genderize.io/js/Genderize.js",
                 "agify" = "https://agify.io/js/Agify.js",
                 "nationalize" = "https://nationalize.io/js/Nationalize.js")
-  char <- readLines(url, warn = FALSE)
+  request  <-  httr::GET(url,
+                         httr::user_agent("github.com/matbmeijer"))
+  if (httr::http_error(request)) {
+    stop(sprintf("Error Code %s - %s",
+                 request$status_code,
+                 httr::http_status(request$status_code)$message),
+         call. = FALSE)
+    }
+  #Format the data to a data.frame
+  char <- httr::content(request, "text", encoding = "UTF-8")
   char <- strsplit(char, split = ";")[[1]]
   char <- char[grepl("ISO Code", char)]
+  #Tranform javascript array to json array
   char <- gsub("^.*f=|(}])},function.*", "\\1", char)
   char <- gsub("\\{country_id\\:", '{"country_id":', char)
   char <- gsub("\\,total\\:", ',"total":', char)
@@ -352,19 +362,6 @@ remove_key <- function(type, verbose = TRUE) {
     }
 }
 
-api_response <- function(status) {
-  response <- switch(as.character(status),
-                     "200" = "Success! Everything is OK",
-                     "400" = "Something is wrong on your end",
-                     "401" = "Invalid API key",
-                     "402" = "Subscription is not active",
-                     "429" = "Request limit reached",
-                     "500" = "Something is wrong on our end",
-                     sprintf("An error has ocurred - Error code %s", status)
-  )
-  return(response)
-}
-
 add_id <- function(x, n) {
   if (nrow(x) > 0) {
     x$id <- n
@@ -414,17 +411,10 @@ api_request <- function(x, type, country_id=NULL, sliced=TRUE, apikey=NULL) {
 
   #Stop if errors
   if (httr::http_error(request)) {
-    if (any(names(content) %in% "error")) {
       stop(sprintf("Error Code %s - %s",
                    request$status_code,
-                   content$error),
+                   httr::http_status(request$status_code)$message),
            call. = FALSE)
-    } else {
-      stop(sprintf("Error Code %s - %s",
-                   request$status_code,
-                   api_response(request$status_code)),
-           call. = FALSE)
-    }
   }
   content$api_rate_limit <- as.integer(request$headers[["x-rate-limit-limit"]])
   content$api_rate_remaining <- as.integer(request$headers[["x-rate-limit-remaining"]])
