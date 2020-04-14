@@ -7,24 +7,24 @@
 get_key(type)
 }
 \arguments{
-\item{type}{Obligatory parameter to define which key to retrieve:
-\itemize{
-\item \code{genderize} - Genderize.io API key
-\item \code{agify} - Agify.io API key
-\item \code{nationalize} - Nationalize.io API key
-}}
+\item{type}{Obligatory parameter to define which key to retrieve: \itemize{
+\item \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io
+API key \item \code{nationalize} - Nationalize.io API key }}
 }
 \value{
-Returns the saved API key in the environment. If no API key has been saved, returns \code{NULL} value.
+Returns the saved API key in the environment. If no API key has been
+  saved, returns \code{NULL} value.
 }
 \description{
-Function to get the previously saved API key. It has the advantage that it is not necessary to explicitly publish the key in the users code.
-Just do it one time and you're set. To save an API, use the \code{save_key()} function.
-To remove a previously saved key, use the \code{remove_key()} function.
+Function to get the previously saved API key. It has the
+  advantage that it is not necessary to explicitly publish the key in the
+  users code. Just do it one time and you're set. To save an API, use the
+  \code{\link{save_key}} function. To remove a previously saved key, use
+  the \code{\link{remove_key}} function.
 }
 \section{Warning}{
-
-Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
+ Please be careful when dealing with API keys and other
+  secrets & tokens - keep them private and do not publish them.
 }
 
 \examples{
@@ -35,5 +35,6 @@ get_key(type="nationalize")
 }
 }
 \author{
-Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+Matthias Brenninkmeijer -
+  \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 }

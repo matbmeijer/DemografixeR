@@ -13,45 +13,65 @@ agify(
 )
 }
 \arguments{
-\item{name}{Name/s to estimate the age. Can be a single \code{character} string or a \code{character} vector.}
+\item{name}{Name/s to estimate the age. Can be a single \code{character}
+string or a \code{character} vector.}
 
-\item{country_id}{Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
-This optional parameter allows to specify a specific country. The API follows the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code convention.
-To see a list of the supported countries use the \code{supported_countries()} function or visit the following \href{https://agify.io/our-data}{link}.}
+\item{country_id}{Responses will in a lot of cases be more accurate if the
+data is narrowed to a specific country. This optional parameter allows to
+specify a specific country. The API follows the common
+\href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
+country code convention. To see a list of the supported countries use the
+\code{\link{supported_countries}} function or visit the following
+\href{https://agify.io/our-data}{link}.}
 
-\item{simplify}{Logical parameter, which defines if the result should be returned as a \code{character} vector or a \code{data.frame} with additional information.
-By default set to \code{TRUE}, which returns a vector.}
+\item{simplify}{Logical parameter, which defines if the result should be
+returned as a \code{character} vector or a \code{data.frame} with
+additional information. By default set to \code{TRUE}, which returns a
+vector.}
 
-\item{apikey}{Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the \href{https://store.agify.io/}{agify.io store} and the obtained API key can be passed through this parameter.
-The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.}
+\item{apikey}{Optional API key parameter. The API is free for up to 1000
+names/day. No sign up or API key needed. Yet, if more requests would be
+needed, visit the \href{https://store.agify.io/}{agify.io store} and the
+obtained API key can be passed through this parameter. The API can also be
+saved one time through the \code{\link{save_key}} function, so it is not
+necessary to call again.}
 
-\item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
-Returns information about:
-\itemize{
-\item The amount of names available in the current time window
-\item The number of names left in the current time window
-\item Seconds remaining until a new time window opens
-}}
+\item{meta}{Logical parameter to define if API related information should be
+returned. By default set to \code{FALSE}. Returns information about:
+\itemize{ \item The amount of names available in the current time window
+\item The number of names left in the current time window \item Seconds
+remaining until a new time window opens }}
 }
 \value{
-The estimated age in a single \code{character} vector form or a \code{data.frame} with additional information.
+The estimated age in a single \code{character} vector form or a
+  \code{data.frame} with additional information.
 }
 \description{
-Connects directly to the \href{https://agify.io/}{agify.io API} to return the predicted age of a name.
+Connects directly to the \href{https://agify.io/}{agify.io API}
+  and parses the response to return the predicted age of a name.
 }
 \details{
-The function automatically handles pagination (max. 10 names per API request), missing values & duplicated values.
-If a name is duplicated for the same \code{country_id} (if given), it will handle the request as a a single name to save requests, returning the same value for the duplicated names.
+The function automatically handles pagination (max. 10 names per API
+  request), missing values & duplicated values. If a name is duplicated for
+  the same \code{country_id} (if given), it will handle the request as a a
+  single name to save requests, returning the same value for the duplicated
+  names. To see more details about the API documentation, visit the
+  \href{https://agify.io/}{agify.io website}.
 }
 \section{Warning}{
-
-Please be aware about local privacy protection regulations such as \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR} when dealing with personal data.
+ Please be aware about local privacy protection regulations
+  such as
+  \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+  when dealing with personal data.
 }
 
 \examples{
 agify(name=c("Ben", "Maria"))
 }
+\seealso{
+\code{\link{genderize}}, \code{\link{nationalize}}
+}
 \author{
-Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+Matthias Brenninkmeijer -
+  \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 }

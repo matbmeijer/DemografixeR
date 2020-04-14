@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve the supported countries for each API — supported_countries • DemografixeR</title>
+<title>DemografixeR: Estimate gender, age and nationality from a name — DemografixeR • DemografixeR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,16 @@
 
 
 
-<meta property="og:title" content="Retrieve the supported countries for each API — supported_countries" />
-<meta property="og:description" content="Scrapes the API websites to retrieve an updated list of
-  supported countries for each API." />
+<meta property="og:title" content="DemografixeR: Estimate gender, age and nationality from a name — DemografixeR" />
+<meta property="og:description" content="The DemografixeR is an API wrapper for the genderize.io, agify.io &amp;amp;
+nationalize.io APIs. Through the APIs it retrieves the estimated gender,
+estimated age and/or estimated nationality from a name. The package most
+important functions are the following:
+genderize
+agify
+nationalize
+
+" />
 
 
 
@@ -112,47 +119,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve the supported countries for each API</h1>
-    <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/api_structure.R'><code>R/api_structure.R</code></a></small>
-    <div class="hidden name"><code>supported_countries.Rd</code></div>
+    <h1>DemografixeR: Estimate gender, age and nationality from a name</h1>
+    <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/DemografixeR.R'><code>R/DemografixeR.R</code></a></small>
+    <div class="hidden name"><code>DemografixeR.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Scrapes the API websites to retrieve an updated list of
-  supported countries for each API.</p>
+    <p>The DemografixeR is an API wrapper for the genderize.io, agify.io &amp;
+nationalize.io APIs. Through the APIs it retrieves the estimated gender,
+estimated age and/or estimated nationality from a name. The package most
+important functions are the following:</p><ul>
+<li><p><code><a href='genderize.html'>genderize</a></code></p></li>
+<li><p><code><a href='agify.html'>agify</a></code></p></li>
+<li><p><code><a href='nationalize.html'>nationalize</a></code></p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>supported_countries</span>(<span class='no'>type</span>)</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>type</th>
-      <td><p>Obligatory parameter to define the API from which to obtain the
-supported countries. Must be one of the following <code>character</code> strings:</p><ul>
-<li><p><code>genderize</code> - Available countries for the Genderize.io
-API.</p></li>
-<li><p><code>agify</code> - Available countries for the Agify.io API.</p></li>
-<li><p><code>nationalize</code> - Available countries for the Nationalize.io API.</p></li>
-</ul></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns a <code>data.frame</code> with the supported
-  <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a>
-  country code, country name the number of items (names) for each country.</p>
-    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
-
-    <p>Please be conscious that this function directly scrapes the
-  website, do not overuse it as it might overwhelm the server.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>supported_countries</span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"genderize"</span>)
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

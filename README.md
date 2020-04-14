@@ -11,8 +11,9 @@ status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https:
 status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
-DemografixeR is an API wrapper of all 3 Demografix API’s - all three
-APIs supported in one package:
+DemografixeR allows to estimate gender, age and/or nationality from a
+name. The package is an API wrapper of all 3 Demografix API’s - all
+three APIs supported in one package:
 
   - <https://genderize.io/> - **Gender estimation** based on a name
   - <https://agify.io/> - **Age estimation** based on a name
@@ -88,10 +89,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  490 |            29690 | 2020-04-13 15:45:10     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  490 |            29690 | 2020-04-13 15:45:10     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  490 |            29690 | 2020-04-13 15:45:10     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  490 |            29690 | 2020-04-13 15:45:10     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
 
 Please note that the ‘DemografixeR’ project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to

@@ -40,7 +40,8 @@
 
 
 <meta property="og:title" content=""Agify" function — agify" />
-<meta property="og:description" content="Connects directly to the agify.io API to return the predicted age of a name." />
+<meta property="og:description" content="Connects directly to the agify.io API
+  and parses the response to return the predicted age of a name." />
 
 
 
@@ -117,7 +118,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Connects directly to the <a href='https://agify.io/'>agify.io API</a> to return the predicted age of a name.</p>
+    <p>Connects directly to the <a href='https://agify.io/'>agify.io API</a>
+  and parses the response to return the predicted age of a name.</p>
     </div>
 
     <pre class="usage"><span class='fu'>agify</span>(
@@ -133,48 +135,68 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>name</th>
-      <td><p>Name/s to estimate the age. Can be a single <code>character</code> string or a <code>character</code> vector.</p></td>
+      <td><p>Name/s to estimate the age. Can be a single <code>character</code>
+string or a <code>character</code> vector.</p></td>
     </tr>
     <tr>
       <th>country_id</th>
-      <td><p>Responses will in a lot of cases be more accurate if the data is narrowed to a specific country.
-This optional parameter allows to specify a specific country. The API follows the common <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a> country code convention.
-To see a list of the supported countries use the <code><a href='supported_countries.html'>supported_countries()</a></code> function or visit the following <a href='https://agify.io/our-data'>link</a>.</p></td>
+      <td><p>Responses will in a lot of cases be more accurate if the
+data is narrowed to a specific country. This optional parameter allows to
+specify a specific country. The API follows the common
+<a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a>
+country code convention. To see a list of the supported countries use the
+<code><a href='supported_countries.html'>supported_countries</a></code> function or visit the following
+<a href='https://agify.io/our-data'>link</a>.</p></td>
     </tr>
     <tr>
       <th>simplify</th>
-      <td><p>Logical parameter, which defines if the result should be returned as a <code>character</code> vector or a <code>data.frame</code> with additional information.
-By default set to <code>TRUE</code>, which returns a vector.</p></td>
+      <td><p>Logical parameter, which defines if the result should be
+returned as a <code>character</code> vector or a <code>data.frame</code> with
+additional information. By default set to <code>TRUE</code>, which returns a
+vector.</p></td>
     </tr>
     <tr>
       <th>apikey</th>
-      <td><p>Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the <a href='https://store.agify.io/'>agify.io store</a> and the obtained API key can be passed through this parameter.
-The API can also be saved one time through the <code><a href='save_key.html'>save_key()</a></code> function, so it is not necessary to call again.</p></td>
+      <td><p>Optional API key parameter. The API is free for up to 1000
+names/day. No sign up or API key needed. Yet, if more requests would be
+needed, visit the <a href='https://store.agify.io/'>agify.io store</a> and the
+obtained API key can be passed through this parameter. The API can also be
+saved one time through the <code><a href='save_key.html'>save_key</a></code> function, so it is not
+necessary to call again.</p></td>
     </tr>
     <tr>
       <th>meta</th>
-      <td><p>Logical parameter to define if API related information should be returned. By default set to <code>FALSE</code>.
-Returns information about:</p><ul>
+      <td><p>Logical parameter to define if API related information should be
+returned. By default set to <code>FALSE</code>. Returns information about:</p><ul>
 <li><p>The amount of names available in the current time window</p></li>
 <li><p>The number of names left in the current time window</p></li>
-<li><p>Seconds remaining until a new time window opens</p></li>
+<li><p>Seconds
+remaining until a new time window opens</p></li>
 </ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The estimated age in a single <code>character</code> vector form or a <code>data.frame</code> with additional information.</p>
+    <p>The estimated age in a single <code>character</code> vector form or a
+  <code>data.frame</code> with additional information.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function automatically handles pagination (max. 10 names per API request), missing values &amp; duplicated values.
-If a name is duplicated for the same <code>country_id</code> (if given), it will handle the request as a a single name to save requests, returning the same value for the duplicated names.</p>
+    <p>The function automatically handles pagination (max. 10 names per API
+  request), missing values &amp; duplicated values. If a name is duplicated for
+  the same <code>country_id</code> (if given), it will handle the request as a a
+  single name to save requests, returning the same value for the duplicated
+  names. To see more details about the API documentation, visit the
+  <a href='https://agify.io/'>agify.io website</a>.</p>
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
-    
+    <p>Please be aware about local privacy protection regulations
+  such as
+  <a href='https://en.wikipedia.org/wiki/General_Data_Protection_Regulation'>GDPR</a>
+  when dealing with personal data.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-<p>Please be aware about local privacy protection regulations such as <a href='https://en.wikipedia.org/wiki/General_Data_Protection_Regulation'>GDPR</a> when dealing with personal data.</p>
+    <div class='dont-index'><p><code><a href='genderize.html'>genderize</a></code>, <code><a href='nationalize.html'>nationalize</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>agify</span>(<span class='kw'>name</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ben"</span>, <span class='st'>"Maria"</span>))</div><div class='output co'>#&gt; [1] 48 21</div></pre>

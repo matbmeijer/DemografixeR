@@ -7,33 +7,30 @@
 save_key(key, type)
 }
 \arguments{
-\item{key}{Key obtained from the specific website.Must be one of the following:
-\itemize{
-\item \code{gender} - \href{https://store.agify.io/signup}{Genderize}
-\item \code{age} - \href{https://store.agify.io/signup}{Agify}
-\item \code{nationality} - \href{https://nationalize.io/signup}{Nationalize}
-}}
+\item{key}{Key obtained from the specific website.Must be one of the
+following: \itemize{ \item \code{gender} -
+\href{https://store.agify.io/signup}{Genderize} \item \code{age} -
+\href{https://store.agify.io/signup}{Agify} \item \code{nationality} -
+\href{https://nationalize.io/signup}{Nationalize} }}
 
-\item{type}{Must be one of the following:
-\itemize{
-\item \code{genderize} - Genderize.io API key
-\item \code{agify} - Agify.io API key
-\item \code{nationalize} - Nationalize.io API key
-}}
+\item{type}{Must be one of the following: \itemize{ \item \code{genderize} -
+Genderize.io API key \item \code{agify} - Agify.io API key \item
+\code{nationalize} - Nationalize.io API key }}
 }
 \value{
 Does save the key in the environment.
 }
 \description{
-Saves the key from the in the users environment.
-It has the advantage that it is not necessary to explicitly publish the key in the users code.
-Just do it one time and you're set. To update the key kust save again and it will overwrite the old key.
-To explictly printing the key, use the \code{get_key()} function.
-To remove the key use the \code{remove_key()} function.
+Saves the key from the in the users environment. It has the
+  advantage that it is not necessary to explicitly publish the key in the
+  users code. Just do it one time and you're set. To update the key kust save
+  again and it will overwrite the old key. To explictly printing the key, use
+  the \code{\link{get_key}} function. To remove the key use the
+  \code{\link{remove_key}} function.
 }
 \section{Warning}{
-
-Please be careful when dealing with API keys and other secrets & tokens - keep them private and do not publish them.
+ Please be careful when dealing with API keys and other
+  secrets & tokens - keep them private and do not publish them.
 }
 
 \examples{
@@ -42,5 +39,6 @@ save_key(key="__YOUR_API_KEY__", type="gender")
 }
 }
 \author{
-Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+Matthias Brenninkmeijer -
+  \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 }

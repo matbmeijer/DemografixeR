@@ -20,7 +20,8 @@ knitr::opts_chunk$set(
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
-DemografixeR is an API wrapper of all 3 Demografix API's - all three APIs supported in one package:
+DemografixeR allows to estimate gender, age and/or nationality from a name.
+The package is an API wrapper of all 3 Demografix API's - all three APIs supported in one package:
 
 * [https://genderize.io/](https://genderize.io/) - **Gender estimation** based on a name
 * [https://agify.io/](https://agify.io/) - **Age estimation** based on a name

@@ -9,7 +9,8 @@ Authors@R:
 Description: Connects to the genderize.io, agify.io & nationalize.io APIs to
     estimate gender, age and nationality based on a given name.
 License: MIT + file LICENSE
-URL: https://github.com/matbmeijer/DemografixeR
+URL: https://matbmeijer.github.io/DemografixeR, https://github.com/matbmeijer/DemografixeR
+BugReports: https://github.com/matbmeijer/DemografixeR/issues
 Encoding: UTF-8
 LazyData: true
 Imports: 

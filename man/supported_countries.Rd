@@ -7,23 +7,24 @@
 supported_countries(type)
 }
 \arguments{
-\item{type}{Obligatory parameter to define the API from which to obtain the supported countries.
-Must be one of the following \code{character} strings:
-\itemize{
-\item \code{genderize} - Available countries for the Genderize.io API.
-\item \code{agify} - Available countries for the Agify.io API.
-\item \code{nationalize} - Available countries for the Nationalize.io API.
-}}
+\item{type}{Obligatory parameter to define the API from which to obtain the
+supported countries. Must be one of the following \code{character} strings:
+\itemize{ \item \code{genderize} - Available countries for the Genderize.io
+API. \item \code{agify} - Available countries for the Agify.io API. \item
+\code{nationalize} - Available countries for the Nationalize.io API. }}
 }
 \value{
-Returns a \code{data.frame} with the supported \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code, country name the number of items (names) for each country.
+Returns a \code{data.frame} with the supported
+  \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
+  country code, country name the number of items (names) for each country.
 }
 \description{
-Scrapes the API websites to retrieve an updated list of supported countries for each API.
+Scrapes the API websites to retrieve an updated list of
+  supported countries for each API.
 }
 \section{Warning}{
-
-Please be conscious that this function directly scrapes the website, do not overuse it as it might overwhelm the server.
+ Please be conscious that this function directly scrapes the
+  website, do not overuse it as it might overwhelm the server.
 }
 
 \examples{

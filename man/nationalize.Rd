@@ -13,45 +13,62 @@ nationalize(
 )
 }
 \arguments{
-\item{name}{Name/s to estimate the nationality. Can be a single \code{character} string or a \code{character} vector.}
+\item{name}{Name/s to estimate the nationality. Can be a single
+\code{character} string or a \code{character} vector.}
 
-\item{simplify}{Defines if the result should be returned as a single vector or a \code{data.frame} with additional information.
-By default set to \code{TRUE}, which returns a vector.}
+\item{simplify}{Defines if the result should be returned as a single vector
+or a \code{data.frame} with additional information. By default set to
+\code{TRUE}, which returns a vector.}
 
-\item{sliced}{Names can have multiple estimated nationalities ranked by probabilty. This logical parameter allows to "slice"/keep only
-the parameter with the highest probability to keep a single estimate for each name.}
+\item{sliced}{Names can have multiple estimated nationalities ranked by
+probabilty. This logical parameter allows to "slice"/keep only the
+parameter with the highest probability to keep a single estimate for each
+name.}
 
-\item{apikey}{Optional API key parameter. The API is free for up to 1000 names/day. No sign up or API key needed.
-Yet, if more requests would be needed, visit the \href{https://store.nationalize.io/}{nationalize.io store} and the obtained API key can be passed through this parameter.
-The API can also be saved one time through the \code{save_key()} function, so it is not necessary to call again.}
+\item{apikey}{Optional API key parameter. The API is free for up to 1000
+names/day. No sign up or API key needed. Yet, if more requests would be
+needed, visit the \href{https://store.nationalize.io/}{nationalize.io
+store} and the obtained API key can be passed through this parameter. The
+API can also be saved one time through the \code{\link{save_key}}
+function, so it is not necessary to call again.}
 
-\item{meta}{Logical parameter to define if API related information should be returned. By default set to \code{FALSE}.
-Returns information about:
-\itemize{
-\item The amount of names available in the current time window
-\item The number of names left in the current time window
-\item Seconds remaining until a new time window opens
-}}
+\item{meta}{Logical parameter to define if API related information should be
+returned. By default set to \code{FALSE}. Returns information about:
+\itemize{ \item The amount of names available in the current time window
+\item The number of names left in the current time window \item Seconds
+remaining until a new time window opens }}
 }
 \value{
-Returns the estimated nationality as the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2} country code.
-The result can be in a single \code{character} vector form or a \code{data.frame} with additional information.
+Returns the estimated nationality as the common
+  \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
+  country code. The result can be in a single \code{character} vector form or
+  a \code{data.frame} with additional information.
 }
 \description{
 Returns the estimated nationality from a given name.
 }
 \details{
-The function automatically handles pagination (max. 10 names per API request), missing values & duplicated values.
-If a name is duplicated for the same \code{country_id} (if given), it will handle the request as a a single name to save requests, returning the same value for the duplicated names.
+The function automatically handles pagination (max. 10 names per API
+  request), missing values & duplicated values. If a name is duplicated for
+  the same \code{country_id} (if given), it will handle the request as a a
+  single name to save requests, returning the same value for the duplicated
+  names. To see more details about the API documentation, visit the
+  \href{https://nationalize.io/}{nationalize.io website}.
 }
 \section{Warning}{
-
-Please be aware about local privacy protection regulations such as \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR} when dealing with personal data.
+ Please be aware about local privacy protection regulations
+  such as
+  \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+   when dealing with personal data.
 }
 
 \examples{
 nationalize(name=c("Ben", "Maria"))
 }
+\seealso{
+\code{\link{genderize}}, \code{\link{agify}}
+}
 \author{
-Matthias Brenninkmeijer - \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+Matthias Brenninkmeijer -
+  \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 }
