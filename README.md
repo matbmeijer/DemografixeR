@@ -11,23 +11,27 @@ status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https:
 status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
 <!-- badges: end -->
 
-DemografixeR allows to estimate gender, age and/or nationality from a
-name. The package is an API wrapper of all 3 Demografix API’s - all
-three APIs supported in one package:
+‘DemografixeR’ allows to estimate gender, age & nationality from a name.
+The package is an API wrapper of all 3 ‘Demografix’ API’s - all three
+APIs supported in one package:
 
-  - <https://genderize.io/> - **Gender estimation** based on a name
-  - <https://agify.io/> - **Age estimation** based on a name
-  - <https://nationalize.io/> - **Nationality estimation** based on a
-    name
+  - [https://genderize.io](https://genderize.io/) - **Gender
+    estimation** based on a name
+  - [https://agify.io](https://agify.io/) - **Age estimation** based on
+    a name
+  - [https://nationalize.io](https://nationalize.io/) - **Nationality
+    estimation** based on a name
 
 ## Documentation
 
-You can find all the necessary documentation about the package here:
-<https://matbmeijer.github.io/DemografixeR/>
+You can find all the necessary documentation about the package
+    here:
+
+  - [https://matbmeijer.github.io/DemografixeR](https://matbmeijer.github.io/DemografixeR/)
 
 ## Installation
 
-You can install the released version of DemografixeR following the next
+You can install the released version of DemografixeR following these `R`
 commands:
 
 ``` r
@@ -37,10 +41,17 @@ devtools::install_github("matbmeijer/DemografixeR")
 
 ## Examples
 
-These are basic examples which shows you how to estimate
+These are basic examples, which shows you how to estimate
 **nationality**, **gender** and **age** by a given name with & without
-specifying a country. It also shows that the functions are able to deal
-with missing values:
+specifying a country. The package takes care of multiple background
+tasks:
+
+  - API pagination
+  - Duplicated names (one request made per name)
+  - Missing values
+  - Workflow integration (e.g. with `dplyr` or `data.table`)
+
+<!-- end list -->
 
 ``` r
 library(DemografixeR)
@@ -89,11 +100,29 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  941 |            39223 | 2020-04-14 13:06:17     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  764 |            29103 | 2020-04-14 15:54:56     |
+
+## Disclaimer
+
+  - This package is in no way affiliated to the Demografix ApS company,
+    the owner of the [‘genderize.io’](https://genderize.io/),
+    [‘agify.io’](https://agify.io/) and
+    [‘nationalize.io’](https://nationalize.io/) APIs.
+  - An open mind towards gender & gender diversity is promoted, warning
+    that the results from the ‘genderize.io’ API reflect an
+    oversimplification of gender identity, gender roles and the meaning
+    of ‘gender’. For more information visit the active discussion in the
+    following [Wikipedia article](https://en.wikipedia.org/wiki/Gender).
+
+## Code of Conduct
 
 Please note that the ‘DemografixeR’ project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
 this project, you agree to abide by its terms.
+
+## License
+
+[MIT © Matthias Brenninkmeijer](LICENSE.md)

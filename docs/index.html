@@ -75,32 +75,41 @@
 <a href="#demografixer" class="anchor"></a>DemografixeR</h1></div>
 <!-- badges: start -->
 
-<p>DemografixeR allows to estimate gender, age and/or nationality from a name. The package is an API wrapper of all 3 Demografix API’s - all three APIs supported in one package:</p>
+<p>‘DemografixeR’ allows to estimate gender, age &amp; nationality from a name. The package is an API wrapper of all 3 ‘Demografix’ API’s - all three APIs supported in one package:</p>
 <ul>
 <li>
-<a href="https://genderize.io/" class="uri">https://genderize.io/</a> - <strong>Gender estimation</strong> based on a name</li>
+<a href="https://genderize.io/">https://genderize.io</a> - <strong>Gender estimation</strong> based on a name</li>
 <li>
-<a href="https://agify.io/" class="uri">https://agify.io/</a> - <strong>Age estimation</strong> based on a name</li>
+<a href="https://agify.io/">https://agify.io</a> - <strong>Age estimation</strong> based on a name</li>
 <li>
-<a href="https://nationalize.io/" class="uri">https://nationalize.io/</a> - <strong>Nationality estimation</strong> based on a name</li>
+<a href="https://nationalize.io/">https://nationalize.io</a> - <strong>Nationality estimation</strong> based on a name</li>
 </ul>
 <div id="documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>You can find all the necessary documentation about the package here: <a href="https://matbmeijer.github.io/DemografixeR/" class="uri">https://matbmeijer.github.io/DemografixeR/</a></p>
+<p>You can find all the necessary documentation about the package here:</p>
+<ul>
+<li><a href="https://matbmeijer.github.io/DemografixeR/">https://matbmeijer.github.io/DemografixeR</a></li>
+</ul>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of DemografixeR following the next commands:</p>
+<p>You can install the released version of DemografixeR following these <code>R</code> commands:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="kw">if</span> (!<span class="fu"><a href="https://rdrr.io/r/base/library.html">require</a></span>(<span class="st">"devtools"</span>)) <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"matbmeijer/DemografixeR"</span>)</pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>These are basic examples which shows you how to estimate <strong>nationality</strong>, <strong>gender</strong> and <strong>age</strong> by a given name with &amp; without specifying a country. It also shows that the functions are able to deal with missing values:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DemografixeR</span>)
+<p>These are basic examples, which shows you how to estimate <strong>nationality</strong>, <strong>gender</strong> and <strong>age</strong> by a given name with &amp; without specifying a country. The package takes care of multiple background tasks:</p>
+<ul>
+<li>API pagination</li>
+<li>Duplicated names (one request made per name)</li>
+<li>Missing values</li>
+<li>Workflow integration (e.g. with <code>dplyr</code> or <code>data.table</code>)</li>
+</ul>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">DemografixeR</span>)
 
 <span class="co">#Simple example without country_id</span>
 <span class="no">names</span><span class="kw">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Ben"</span>, <span class="st">"Allister"</span>, <span class="st">"Lucie"</span>, <span class="st">"Paula"</span>)
@@ -217,9 +226,9 @@
 <td align="right">0.95</td>
 <td align="right">77991</td>
 <td align="right">1000</td>
-<td align="right">941</td>
-<td align="right">39223</td>
-<td align="left">2020-04-14 13:06:17</td>
+<td align="right">764</td>
+<td align="right">29103</td>
+<td align="left">2020-04-14 15:54:56</td>
 </tr>
 <tr class="even">
 <td>1</td>
@@ -229,9 +238,9 @@
 <td align="right">0.98</td>
 <td align="right">129</td>
 <td align="right">1000</td>
-<td align="right">941</td>
-<td align="right">39223</td>
-<td align="left">2020-04-14 13:06:17</td>
+<td align="right">764</td>
+<td align="right">29103</td>
+<td align="left">2020-04-14 15:54:56</td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -241,9 +250,9 @@
 <td align="right">0.99</td>
 <td align="right">85580</td>
 <td align="right">1000</td>
-<td align="right">941</td>
-<td align="right">39223</td>
-<td align="left">2020-04-14 13:06:17</td>
+<td align="right">764</td>
+<td align="right">29103</td>
+<td align="left">2020-04-14 15:54:56</td>
 </tr>
 <tr class="even">
 <td>4</td>
@@ -253,13 +262,30 @@
 <td align="right">0.98</td>
 <td align="right">74130</td>
 <td align="right">1000</td>
-<td align="right">941</td>
-<td align="right">39223</td>
-<td align="left">2020-04-14 13:06:17</td>
+<td align="right">764</td>
+<td align="right">29103</td>
+<td align="left">2020-04-14 15:54:56</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div id="disclaimer" class="section level2">
+<h2 class="hasAnchor">
+<a href="#disclaimer" class="anchor"></a>Disclaimer</h2>
+<ul>
+<li>This package is in no way affiliated to the Demografix ApS company, the owner of the <a href="https://genderize.io/">‘genderize.io’</a>, <a href="https://agify.io/">‘agify.io’</a> and <a href="https://nationalize.io/">‘nationalize.io’</a> APIs.</li>
+<li>An open mind towards gender &amp; gender diversity is promoted, warning that the results from the ‘genderize.io’ API reflect an oversimplification of gender identity, gender roles and the meaning of ‘gender’. For more information visit the active discussion in the following <a href="https://en.wikipedia.org/wiki/Gender">Wikipedia article</a>.</li>
+</ul>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
 <p>Please note that the ‘DemografixeR’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
+<div id="license" class="section level2">
+<h2 class="hasAnchor">
+<a href="#license" class="anchor"></a>License</h2>
+<p><a href="LICENSE.html">MIT © Matthias Brenninkmeijer</a></p>
 </div>
 </div>
   </div>
