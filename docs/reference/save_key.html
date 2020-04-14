@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Saves the key for future functions — save_key • DemografixeR</title>
+<title>Saves the API key for future functions — save_key • DemografixeR</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,13 @@
 
 
 
-<meta property="og:title" content="Saves the key for future functions — save_key" />
-<meta property="og:description" content="Saves the key from the in the users environment. It has the
-  advantage that it is not necessary to explicitly publish the key in the
-  users code. Just do it one time and you're set. To update the key kust save
-  again and it will overwrite the old key. To explictly printing the key, use
-  the get_key function. To remove the key use the
-  remove_key function." />
+<meta property="og:title" content="Saves the API key for future functions — save_key" />
+<meta property="og:description" content="Saves the different genderize.io, agify.io &amp;amp; nationalize.io API
+  keys in the users environment. It has the advantage that it is not necessary
+  to explicitly publish the key in the users code. Just do it one time and
+  you're set. To update the key just save again and it will overwrite the old
+  key. To explictly print the key, use the get_key function. To
+  remove the key use the remove_key function." />
 
 
 
@@ -116,18 +116,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Saves the key for future functions</h1>
+    <h1>Saves the API key for future functions</h1>
     <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/api_structure.R'><code>R/api_structure.R</code></a></small>
     <div class="hidden name"><code>save_key.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Saves the key from the in the users environment. It has the
-  advantage that it is not necessary to explicitly publish the key in the
-  users code. Just do it one time and you're set. To update the key kust save
-  again and it will overwrite the old key. To explictly printing the key, use
-  the <code><a href='get_key.html'>get_key</a></code> function. To remove the key use the
-  <code><a href='remove_key.html'>remove_key</a></code> function.</p>
+    <p>Saves the different genderize.io, agify.io &amp; nationalize.io API
+  keys in the users environment. It has the advantage that it is not necessary
+  to explicitly publish the key in the users code. Just do it one time and
+  you're set. To update the key just save again and it will overwrite the old
+  key. To explictly print the key, use the <code><a href='get_key.html'>get_key</a></code> function. To
+  remove the key use the <code><a href='remove_key.html'>remove_key</a></code> function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>save_key</span>(<span class='no'>key</span>, <span class='no'>type</span>)</pre>
@@ -137,8 +137,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>key</th>
-      <td><p>Key obtained from the specific website.Must be one of the
-following:</p><ul>
+      <td><p>API key obtained from the specific website. Must be one of the
+following values:</p><ul>
 <li><p><code>gender</code> -
 <a href='https://store.agify.io/signup'>Genderize</a></p></li>
 <li><p><code>age</code> -
@@ -165,6 +165,9 @@ Genderize.io API key</p></li>
 
     <p>Please be careful when dealing with API keys and other
   secrets &amp; tokens - keep them private and do not publish them.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='get_key.html'>get_key</a></code>, <code><a href='remove_key.html'>remove_key</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {

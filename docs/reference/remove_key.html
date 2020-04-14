@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Removes saved key — remove_key • DemografixeR</title>
+<title>Removes saved API key — remove_key • DemografixeR</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Removes saved key — remove_key" />
-<meta property="og:description" content="Removes saved keys for the DemografixeR APIs (Genderize.io,
-  Agify.io, Nationalize.io)" />
+<meta property="og:title" content="Removes saved API key — remove_key" />
+<meta property="og:description" content="Removes saved API keys for the DemografixeR APIs (Genderize.io,
+  Agify.io, Nationalize.io)." />
 
 
 
@@ -112,14 +112,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Removes saved key</h1>
+    <h1>Removes saved API key</h1>
     <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/api_structure.R'><code>R/api_structure.R</code></a></small>
     <div class="hidden name"><code>remove_key.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Removes saved keys for the DemografixeR APIs (Genderize.io,
-  Agify.io, Nationalize.io)</p>
+    <p>Removes saved API keys for the DemografixeR APIs (Genderize.io,
+  Agify.io, Nationalize.io).</p>
     </div>
 
     <pre class="usage"><span class='fu'>remove_key</span>(<span class='no'>type</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
@@ -129,7 +129,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>type</th>
-      <td><p>Choose the type of key to remove from the environment variables:</p><ul>
+      <td><p>Choose the type of API key to remove from the environment variables:</p><ul>
 <li><p><code>genderize</code> - Genderize.io API key</p></li>
 <li><p><code>agify</code>
 - Agify.io API key</p></li>
@@ -138,8 +138,8 @@
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Logical parameter to define if a verbose message should be
-printed.</p></td>
+      <td><p><code>Logical</code> parameter to define if a verbose message should be
+printed. By default set to <code>TRUE</code>.</p></td>
     </tr>
     </table>
 
@@ -150,6 +150,9 @@ printed.</p></td>
 
     <p>Please be careful when dealing with API keys and other
   secrets &amp; tokens - keep them private and do not publish them.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='save_key.html'>save_key</a></code>, <code><a href='get_key.html'>get_key</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {

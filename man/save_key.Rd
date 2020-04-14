@@ -2,13 +2,13 @@
 % Please edit documentation in R/api_structure.R
 \name{save_key}
 \alias{save_key}
-\title{Saves the key for future functions}
+\title{Saves the API key for future functions}
 \usage{
 save_key(key, type)
 }
 \arguments{
-\item{key}{Key obtained from the specific website.Must be one of the
-following: \itemize{ \item \code{gender} -
+\item{key}{API key obtained from the specific website. Must be one of the
+following values: \itemize{ \item \code{gender} -
 \href{https://store.agify.io/signup}{Genderize} \item \code{age} -
 \href{https://store.agify.io/signup}{Agify} \item \code{nationality} -
 \href{https://nationalize.io/signup}{Nationalize} }}
@@ -21,12 +21,12 @@ Genderize.io API key \item \code{agify} - Agify.io API key \item
 Does save the key in the environment.
 }
 \description{
-Saves the key from the in the users environment. It has the
-  advantage that it is not necessary to explicitly publish the key in the
-  users code. Just do it one time and you're set. To update the key kust save
-  again and it will overwrite the old key. To explictly printing the key, use
-  the \code{\link{get_key}} function. To remove the key use the
-  \code{\link{remove_key}} function.
+Saves the different genderize.io, agify.io & nationalize.io API
+  keys in the users environment. It has the advantage that it is not necessary
+  to explicitly publish the key in the users code. Just do it one time and
+  you're set. To update the key just save again and it will overwrite the old
+  key. To explictly print the key, use the \code{\link{get_key}} function. To
+  remove the key use the \code{\link{remove_key}} function.
 }
 \section{Warning}{
  Please be careful when dealing with API keys and other
@@ -37,6 +37,9 @@ Saves the key from the in the users environment. It has the
 \dontrun{
 save_key(key="__YOUR_API_KEY__", type="gender")
 }
+}
+\seealso{
+\code{\link{get_key}}, \code{\link{remove_key}}
 }
 \author{
 Matthias Brenninkmeijer -

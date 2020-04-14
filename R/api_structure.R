@@ -1,30 +1,31 @@
 #' @title "Agify" function
-#' @description Connects directly to the \href{https://agify.io/}{agify.io API}
-#'   and parses the response to return the predicted age of a name.
+#' @description Function to estimate the age from a first name. Connects
+#'   directly to the \href{https://agify.io/}{agify.io API} sending a request
+#'   with a name and parses the response to return the predicted age.
 #' @param name Name/s to estimate the age. Can be a single \code{character}
-#'   string or a \code{character} vector.
+#'   string or a \code{character} vector. Obligatory parameter.
 #' @param country_id Responses will in a lot of cases be more accurate if the
 #'   data is narrowed to a specific country. This optional parameter allows to
-#'   specify a specific country. The API follows the common
-#'   \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
-#'   country code convention. To see a list of the supported countries use the
-#'   \code{\link{supported_countries}} function or visit the following
-#'   \href{https://agify.io/our-data}{link}.
-#' @param simplify Logical parameter, which defines if the result should be
-#'   returned as a \code{character} vector or a \code{data.frame} with
+#'   specify a specific country. The parameter must be a country code following
+#'   the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO
+#'   3166-1 alpha-2} country code convention. To see a list of the supported
+#'   countries use the \code{\link{supported_countries}} function or visit the
+#'   following \href{https://agify.io/our-data}{link}.
+#' @param simplify \code{Logical} parameter, which defines if the result should
+#'   be returned as a \code{character} vector or a \code{data.frame} with
 #'   additional information. By default set to \code{TRUE}, which returns a
 #'   vector.
-#' @param apikey Optional API key parameter. The API is free for up to 1000
-#'   names/day. No sign up or API key needed. Yet, if more requests would be
-#'   needed, visit the \href{https://store.agify.io/}{agify.io store} and the
-#'   obtained API key can be passed through this parameter. The API can also be
-#'   saved one time through the \code{\link{save_key}} function, so it is not
-#'   necessary to call again.
-#' @param meta Logical parameter to define if API related information should be
-#'   returned. By default set to \code{FALSE}. Returns information about:
-#'   \itemize{ \item The amount of names available in the current time window
-#'   \item The number of names left in the current time window \item Seconds
-#'   remaining until a new time window opens }
+#' @param apikey Optional paramter to pass the API key. The API is free for up
+#'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
+#'   would be needed, visit the \href{https://store.agify.io/}{agify.io store}
+#'   and the obtained API key can be passed through this parameter. The API can
+#'   also be saved one time through the \code{\link{save_key}} function, so it
+#'   is not necessary to call again.
+#' @param meta \code{Logical} parameter to define if API related information
+#'   should be returned. By default set to \code{FALSE}. Returns information
+#'   about: \itemize{ \item The amount of names available in the current time
+#'   window \item The number of names left in the current time window \item
+#'   Seconds remaining until a new time window opens }
 #' @return The estimated age in a single \code{character} vector form or a
 #'   \code{data.frame} with additional information.
 #' @author Matthias Brenninkmeijer -
@@ -39,7 +40,7 @@
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
 #'   \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
-#'   when dealing with personal data.
+#'    when dealing with personal data.
 #' @examples
 #' agify(name=c("Ben", "Maria"))
 #' @export
@@ -66,46 +67,47 @@ agify <- function(name,
 }
 
 #' @title "Genderize" function
-#' @description Connects directly to the
-#'   \href{https://genderize.io/}{genderize.io API} to return the predicted
-#'   gender of a name.
+#' @description Function to estimate the gender from a first name. Connects
+#'   directly to the \href{https://genderize.io/}{genderize.io API} sending a
+#'   request with a name and parses the response to return the predicted gender.
 #' @param name Name/s to estimate the gender. Can be a single \code{character}
-#'   string or a \code{character} vector.
+#'   string or a \code{character} vector. Obligatory parameter.
 #' @param country_id Responses will in a lot of cases be more accurate if the
 #'   data is narrowed to a specific country. This optional parameter allows to
-#'   specify a specific country. The API follows the common
-#'   \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
-#'   country code convention. To see a list of the supported countries use the
-#'   \code{\link{supported_countries}} function or visit the following
-#'   \href{https://genderize.io/our-data}{link}.
+#'   specify a specific country. The parameter must be a country code following
+#'   the common \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO
+#'   3166-1 alpha-2} country code convention. To see a list of the supported
+#'   countries use the \code{\link{supported_countries}} function or visit the
+#'   following \href{https://genderize.io/our-data}{link}.
 #' @param simplify Defines if the result should be returned as a single vector
 #'   or a \code{data.frame} with additional information. By default set to
-#'   \code{TRUE}, which returns a vector. If set to \code{TRUE}, it will include
-#'   additional information about: \itemize{ \item The probability indicates the
-#'   certainty of the assigned gender. Basically the ratio of male to females.
-#'   \item The count represents the number of data rows examined in order to
-#'   calculate the response. }
-#' @param apikey Optional API key parameter. The API is free for up to 1000
-#'   names/day. No sign up or API key needed. Yet, if more requests would be
-#'   needed, visit the \href{https://store.genderize.io/}{genderize.io store}
-#'   and the obtained API key can be passed through this parameter. The API can
-#'   also be saved one time through the \code{\link{save_key}} function, so it
-#'   is not necessary to call again.
-#' @param meta Logical parameter to define if API related information should be
-#'   returned. By default set to \code{FALSE}. Returns information about:
-#'   \itemize{ \item The amount of names available in the current time window
-#'   \item The number of names left in the current time window \item Seconds
-#'   remaining until a new time window opens }
+#'   \code{TRUE}, which returns a vector. If set to \code{FALSE}, it will
+#'   include additional information about: \itemize{ \item The probability
+#'   indicating the certainty of the assigned gender. Basically the ratio of
+#'   male to females. \item The count representing the number of data rows
+#'   examined in order to calculate the response. }
+#' @param apikey Optional paramter to pass the API key. The API is free for up
+#'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
+#'   would be needed, visit the \href{https://store.genderize.io/}{genderize.io
+#'   store} and the obtained API key can be passed through this parameter. The
+#'   API can also be saved one time through the \code{\link{save_key}} function,
+#'   so it is not necessary to call again.
+#' @param meta \code{Logical} parameter to define if API related information
+#'   should be returned. By default set to \code{FALSE}. Returns information
+#'   about: \itemize{ \item The amount of names available in the current time
+#'   window \item The number of names left in the current time window \item
+#'   Seconds remaining until a new time window opens }
 #' @return The estimated age in a single \code{character} vector form or a
 #'   \code{data.frame} with additional information.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @details The function automatically handles pagination (max. 10 names per API
 #'   request), missing values & duplicated values. If a name is duplicated for
-#'   the same \code{country_id} (if given), it will handle the request as a a
-#'   single name to save requests, returning the same value for the duplicated
-#'   names. To see more details about the API documentation, visit the
-#'   \href{https://genderize.io/}{genderize.io website}.
+#'   the same \code{country_id} (if the parameter has been passed), it will
+#'   handle the request as a a single name to save requests, returning the same
+#'   value for the duplicated names. To see more details about the API
+#'   documentation, visit the \href{https://genderize.io/}{genderize.io
+#'   website}.
 #' @seealso \code{\link{nationalize}}, \code{\link{agify}}
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
@@ -140,25 +142,26 @@ genderize <- function(name,
 #' @title "Nationalize" function
 #' @description Returns the estimated nationality from a given name.
 #' @param name Name/s to estimate the nationality. Can be a single
-#'   \code{character} string or a \code{character} vector.
+#'   \code{character} string or a \code{character} vector. Obligatory parameter.
 #' @param simplify Defines if the result should be returned as a single vector
 #'   or a \code{data.frame} with additional information. By default set to
 #'   \code{TRUE}, which returns a vector.
 #' @param sliced Names can have multiple estimated nationalities ranked by
-#'   probabilty. This logical parameter allows to "slice"/keep only the
+#'   probability. This \code{logical} parameter allows to "slice"/keep only the
 #'   parameter with the highest probability to keep a single estimate for each
-#'   name.
-#' @param apikey Optional API key parameter. The API is free for up to 1000
-#'   names/day. No sign up or API key needed. Yet, if more requests would be
-#'   needed, visit the \href{https://store.nationalize.io/}{nationalize.io
-#'   store} and the obtained API key can be passed through this parameter. The
-#'   API can also be saved one time through the \code{\link{save_key}}
-#'   function, so it is not necessary to call again.
-#' @param meta Logical parameter to define if API related information should be
-#'   returned. By default set to \code{FALSE}. Returns information about:
-#'   \itemize{ \item The amount of names available in the current time window
-#'   \item The number of names left in the current time window \item Seconds
-#'   remaining until a new time window opens }
+#'   name. By default set to \code{TRUE}.
+#' @param apikey Optional paramter to pass the API key. The API is free for up
+#'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
+#'   would be needed, visit the
+#'   \href{https://store.nationalize.io/}{nationalize.io store} and the obtained
+#'   API key can be passed through this parameter. The API can also be saved one
+#'   time through the \code{\link{save_key}} function, so it is not necessary to
+#'   call again.
+#' @param meta \code{Logical} parameter to define if API related information
+#'   should be returned. By default set to \code{FALSE}. Returns information
+#'   about: \itemize{ \item The amount of names available in the current time
+#'   window \item The number of names left in the current time window \item
+#'   Seconds remaining until a new time window opens }
 #' @return Returns the estimated nationality as the common
 #'   \href{http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2}{ISO 3166-1 alpha-2}
 #'   country code. The result can be in a single \code{character} vector form or
@@ -167,10 +170,11 @@ genderize <- function(name,
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
 #' @details The function automatically handles pagination (max. 10 names per API
 #'   request), missing values & duplicated values. If a name is duplicated for
-#'   the same \code{country_id} (if given), it will handle the request as a a
-#'   single name to save requests, returning the same value for the duplicated
-#'   names. To see more details about the API documentation, visit the
-#'   \href{https://nationalize.io/}{nationalize.io website}.
+#'   the same \code{country_id} (if the parameter has been passed), it will
+#'   handle the request as a a single name to save requests, returning the same
+#'   value for the duplicated names. To see more details about the API
+#'   documentation, visit the \href{https://nationalize.io/}{nationalize.io
+#'   website}.
 #' @seealso \code{\link{genderize}}, \code{\link{agify}}
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
@@ -238,15 +242,15 @@ supported_countries <- function(type) {
 }
 
 
-#' @title Saves the key for future functions
-#' @description Saves the key from the in the users environment. It has the
-#'   advantage that it is not necessary to explicitly publish the key in the
-#'   users code. Just do it one time and you're set. To update the key kust save
-#'   again and it will overwrite the old key. To explictly printing the key, use
-#'   the \code{\link{get_key}} function. To remove the key use the
-#'   \code{\link{remove_key}} function.
-#' @param key Key obtained from the specific website.Must be one of the
-#'   following: \itemize{ \item \code{gender} -
+#' @title Saves the API key for future functions
+#' @description Saves the different genderize.io, agify.io & nationalize.io API
+#'   keys in the users environment. It has the advantage that it is not necessary
+#'   to explicitly publish the key in the users code. Just do it one time and
+#'   you're set. To update the key just save again and it will overwrite the old
+#'   key. To explictly print the key, use the \code{\link{get_key}} function. To
+#'   remove the key use the \code{\link{remove_key}} function.
+#' @param key API key obtained from the specific website. Must be one of the
+#'   following values: \itemize{ \item \code{gender} -
 #'   \href{https://store.agify.io/signup}{Genderize} \item \code{age} -
 #'   \href{https://store.agify.io/signup}{Agify} \item \code{nationality} -
 #'   \href{https://nationalize.io/signup}{Nationalize} }
@@ -256,6 +260,7 @@ supported_countries <- function(type) {
 #' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @seealso \code{\link{get_key}}, \code{\link{remove_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
@@ -286,6 +291,7 @@ save_key <- function(key, type) {
 #'   saved, returns \code{NULL} value.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @seealso \code{\link{save_key}}, \code{\link{remove_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
@@ -308,17 +314,18 @@ get_key <- function(type) {
   return(key)
 }
 
-#' @title Removes saved key
-#' @description Removes saved keys for the DemografixeR APIs (Genderize.io,
-#'   Agify.io, Nationalize.io)
-#' @param type Choose the type of key to remove from the environment variables:
+#' @title Removes saved API key
+#' @description Removes saved API keys for the DemografixeR APIs (Genderize.io,
+#'   Agify.io, Nationalize.io).
+#' @param type Choose the type of API key to remove from the environment variables:
 #'   \itemize{ \item \code{genderize} - Genderize.io API key \item \code{agify}
 #'   - Agify.io API key \item \code{nationalize} - Nationalize.io API key }
-#' @param verbose Logical parameter to define if a verbose message should be
-#'   printed.
+#' @param verbose \code{Logical} parameter to define if a verbose message should be
+#'   printed. By default set to \code{TRUE}.
 #' @return Does not return any object.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
+#' @seealso \code{\link{save_key}}, \code{\link{get_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples

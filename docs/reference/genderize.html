@@ -40,9 +40,9 @@
 
 
 <meta property="og:title" content=""Genderize" function — genderize" />
-<meta property="og:description" content="Connects directly to the
-  genderize.io API to return the predicted
-  gender of a name." />
+<meta property="og:description" content="Function to estimate the gender from a first name. Connects
+  directly to the genderize.io API sending a
+  request with a name and parses the response to return the predicted gender." />
 
 
 
@@ -119,9 +119,9 @@
     </div>
 
     <div class="ref-description">
-    <p>Connects directly to the
-  <a href='https://genderize.io/'>genderize.io API</a> to return the predicted
-  gender of a name.</p>
+    <p>Function to estimate the gender from a first name. Connects
+  directly to the <a href='https://genderize.io/'>genderize.io API</a> sending a
+  request with a name and parses the response to return the predicted gender.</p>
     </div>
 
     <pre class="usage"><span class='fu'>genderize</span>(
@@ -138,47 +138,49 @@
     <tr>
       <th>name</th>
       <td><p>Name/s to estimate the gender. Can be a single <code>character</code>
-string or a <code>character</code> vector.</p></td>
+string or a <code>character</code> vector. Obligatory parameter.</p></td>
     </tr>
     <tr>
       <th>country_id</th>
       <td><p>Responses will in a lot of cases be more accurate if the
 data is narrowed to a specific country. This optional parameter allows to
-specify a specific country. The API follows the common
-<a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a>
-country code convention. To see a list of the supported countries use the
-<code><a href='supported_countries.html'>supported_countries</a></code> function or visit the following
-<a href='https://genderize.io/our-data'>link</a>.</p></td>
+specify a specific country. The parameter must be a country code following
+the common <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO
+3166-1 alpha-2</a> country code convention. To see a list of the supported
+countries use the <code><a href='supported_countries.html'>supported_countries</a></code> function or visit the
+following <a href='https://genderize.io/our-data'>link</a>.</p></td>
     </tr>
     <tr>
       <th>simplify</th>
       <td><p>Defines if the result should be returned as a single vector
 or a <code>data.frame</code> with additional information. By default set to
-<code>TRUE</code>, which returns a vector. If set to <code>TRUE</code>, it will include
-additional information about:</p><ul>
-<li><p>The probability indicates the
-certainty of the assigned gender. Basically the ratio of male to females.</p></li>
-<li><p>The count represents the number of data rows examined in order to
-calculate the response.</p></li>
+<code>TRUE</code>, which returns a vector. If set to <code>FALSE</code>, it will
+include additional information about:</p><ul>
+<li><p>The probability
+indicating the certainty of the assigned gender. Basically the ratio of
+male to females.</p></li>
+<li><p>The count representing the number of data rows
+examined in order to calculate the response.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>apikey</th>
-      <td><p>Optional API key parameter. The API is free for up to 1000
-names/day. No sign up or API key needed. Yet, if more requests would be
-needed, visit the <a href='https://store.genderize.io/'>genderize.io store</a>
-and the obtained API key can be passed through this parameter. The API can
-also be saved one time through the <code><a href='save_key.html'>save_key</a></code> function, so it
-is not necessary to call again.</p></td>
+      <td><p>Optional paramter to pass the API key. The API is free for up
+to 1000 names/day. No sign up or API key needed. Yet, if more requests
+would be needed, visit the <a href='https://store.genderize.io/'>genderize.io
+store</a> and the obtained API key can be passed through this parameter. The
+API can also be saved one time through the <code><a href='save_key.html'>save_key</a></code> function,
+so it is not necessary to call again.</p></td>
     </tr>
     <tr>
       <th>meta</th>
-      <td><p>Logical parameter to define if API related information should be
-returned. By default set to <code>FALSE</code>. Returns information about:</p><ul>
-<li><p>The amount of names available in the current time window</p></li>
+      <td><p><code>Logical</code> parameter to define if API related information
+should be returned. By default set to <code>FALSE</code>. Returns information
+about:</p><ul>
+<li><p>The amount of names available in the current time
+window</p></li>
 <li><p>The number of names left in the current time window</p></li>
-<li><p>Seconds
-remaining until a new time window opens</p></li>
+<li><p>Seconds remaining until a new time window opens</p></li>
 </ul></td>
     </tr>
     </table>
@@ -191,10 +193,11 @@ remaining until a new time window opens</p></li>
 
     <p>The function automatically handles pagination (max. 10 names per API
   request), missing values &amp; duplicated values. If a name is duplicated for
-  the same <code>country_id</code> (if given), it will handle the request as a a
-  single name to save requests, returning the same value for the duplicated
-  names. To see more details about the API documentation, visit the
-  <a href='https://genderize.io/'>genderize.io website</a>.</p>
+  the same <code>country_id</code> (if the parameter has been passed), it will
+  handle the request as a a single name to save requests, returning the same
+  value for the duplicated names. To see more details about the API
+  documentation, visit the <a href='https://genderize.io/'>genderize.io
+  website</a>.</p>
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
     <p>Please be aware about local privacy protection regulations

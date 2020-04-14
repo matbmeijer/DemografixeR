@@ -34,6 +34,9 @@ get_key(type="agify")
 get_key(type="nationalize")
 }
 }
+\seealso{
+\code{\link{save_key}}, \code{\link{remove_key}}
+}
 \author{
 Matthias Brenninkmeijer -
   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}

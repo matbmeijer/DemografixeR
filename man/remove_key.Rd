@@ -2,24 +2,24 @@
 % Please edit documentation in R/api_structure.R
 \name{remove_key}
 \alias{remove_key}
-\title{Removes saved key}
+\title{Removes saved API key}
 \usage{
 remove_key(type, verbose = TRUE)
 }
 \arguments{
-\item{type}{Choose the type of key to remove from the environment variables:
+\item{type}{Choose the type of API key to remove from the environment variables:
 \itemize{ \item \code{genderize} - Genderize.io API key \item \code{agify}
 - Agify.io API key \item \code{nationalize} - Nationalize.io API key }}
 
-\item{verbose}{Logical parameter to define if a verbose message should be
-printed.}
+\item{verbose}{\code{Logical} parameter to define if a verbose message should be
+printed. By default set to \code{TRUE}.}
 }
 \value{
 Does not return any object.
 }
 \description{
-Removes saved keys for the DemografixeR APIs (Genderize.io,
-  Agify.io, Nationalize.io)
+Removes saved API keys for the DemografixeR APIs (Genderize.io,
+  Agify.io, Nationalize.io).
 }
 \section{Warning}{
  Please be careful when dealing with API keys and other
@@ -32,6 +32,9 @@ remove_key(type="genderize")
 remove_key(type="agify")
 remove_key(type="nationalize")
 }
+}
+\seealso{
+\code{\link{save_key}}, \code{\link{get_key}}
 }
 \author{
 Matthias Brenninkmeijer -
