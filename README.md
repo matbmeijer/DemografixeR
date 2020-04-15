@@ -9,6 +9,8 @@
 status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https://travis-ci.org/matbmeijer/DemografixeR)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/matbmeijer/DemografixeR?branch=master&svg=true)](https://ci.appveyor.com/project/matbmeijer/DemografixeR)
+[![Codecov test
+coverage](https://codecov.io/gh/matbmeijer/DemografixeR/branch/master/graph/badge.svg)](https://codecov.io/gh/matbmeijer/DemografixeR?branch=master)
 <!-- badges: end -->
 
 ‘DemografixeR’ allows to estimate gender, age & nationality from a name.
@@ -100,10 +102,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  717 |             7934 | 2020-04-14 21:47:46     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  947 |            52248 | 2020-04-15 09:29:12     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  947 |            52248 | 2020-04-15 09:29:12     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  947 |            52248 | 2020-04-15 09:29:12     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  947 |            52248 | 2020-04-15 09:29:12     |
 
 ## Disclaimer
 

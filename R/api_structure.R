@@ -19,7 +19,7 @@
 #'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
 #'   would be needed, visit the \href{https://store.agify.io/}{agify.io store}
 #'   and the obtained API key can be passed through this parameter. The API can
-#'   also be saved one time through the \code{\link{save_key}} function, so it
+#'   also be saved one time through the \code{\link{save_api_key}} function, so it
 #'   is not necessary to call again.
 #' @param meta \code{Logical} parameter to define if API related information
 #'   should be returned. By default set to \code{FALSE}. Returns information
@@ -39,7 +39,7 @@
 #' @seealso \code{\link{genderize}}, \code{\link{nationalize}}
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
-#'   \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+#'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
 #' agify(name=c("Ben", "Maria"))
@@ -48,7 +48,7 @@
 agify <- function(name,
                   country_id = NULL,
                   simplify = TRUE,
-                  apikey = get_key("agify"),
+                  apikey = get_api_key("agify"),
                   meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "age",
@@ -90,7 +90,7 @@ agify <- function(name,
 #'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
 #'   would be needed, visit the \href{https://store.genderize.io/}{genderize.io
 #'   store} and the obtained API key can be passed through this parameter. The
-#'   API can also be saved one time through the \code{\link{save_key}} function,
+#'   API can also be saved one time through the \code{\link{save_api_key}} function,
 #'   so it is not necessary to call again.
 #' @param meta \code{Logical} parameter to define if API related information
 #'   should be returned. By default set to \code{FALSE}. Returns information
@@ -111,7 +111,7 @@ agify <- function(name,
 #' @seealso \code{\link{nationalize}}, \code{\link{agify}}
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
-#'   \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+#'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
 #' genderize(name=c("Ben", "Maria"))
@@ -120,7 +120,7 @@ agify <- function(name,
 genderize <- function(name,
                       country_id = NULL,
                       simplify = TRUE,
-                      apikey = get_key("genderize"),
+                      apikey = get_api_key("genderize"),
                       meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "gender",
@@ -155,7 +155,7 @@ genderize <- function(name,
 #'   would be needed, visit the
 #'   \href{https://store.nationalize.io/}{nationalize.io store} and the obtained
 #'   API key can be passed through this parameter. The API can also be saved one
-#'   time through the \code{\link{save_key}} function, so it is not necessary to
+#'   time through the \code{\link{save_api_key}} function, so it is not necessary to
 #'   call again.
 #' @param meta \code{Logical} parameter to define if API related information
 #'   should be returned. By default set to \code{FALSE}. Returns information
@@ -178,7 +178,7 @@ genderize <- function(name,
 #' @seealso \code{\link{genderize}}, \code{\link{agify}}
 #' @section Warning: Please be aware about local privacy protection regulations
 #'   such as
-#'   \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+#'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
 #' nationalize(name=c("Ben", "Maria"))
@@ -187,13 +187,13 @@ genderize <- function(name,
 nationalize <- function(name,
                         simplify = TRUE,
                         sliced = TRUE,
-                        apikey = get_key("genderize"),
+                        apikey = get_api_key("genderize"),
                         meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "nationality",
                            country_id = NULL,
                            sliced = sliced,
-                           apikey = get_key("nationalize"))
+                           apikey = get_api_key("nationalize"))
   if (simplify) {
     y <- y$country_id
   } else {
@@ -254,11 +254,12 @@ supported_countries <- function(type) {
 
 #' @title Saves the API key for future functions
 #' @description Saves the different genderize.io, agify.io & nationalize.io API
-#'   keys in the users environment. It has the advantage that it is not necessary
-#'   to explicitly publish the key in the users code. Just do it one time and
-#'   you're set. To update the key just save again and it will overwrite the old
-#'   key. To explictly print the key, use the \code{\link{get_key}} function. To
-#'   remove the key use the \code{\link{remove_key}} function.
+#'   keys in the users environment. It has the advantage that it is not
+#'   necessary to explicitly publish the key in the users code. Just do it one
+#'   time and you're set. To update the key just save again and it will
+#'   overwrite the old key. To explictly print the key, use the
+#'   \code{\link{get_api_key}} function. To remove the key use the
+#'   \code{\link{remove_api_key}} function.
 #' @param key API key obtained from the specific website. Must be one of the
 #'   following values: \itemize{ \item \code{gender} -
 #'   \href{https://store.agify.io/signup}{Genderize} \item \code{age} -
@@ -270,16 +271,16 @@ supported_countries <- function(type) {
 #' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @seealso \code{\link{get_key}}, \code{\link{remove_key}}
+#' @seealso \code{\link{get_api_key}}, \code{\link{remove_api_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' save_key(key="__YOUR_API_KEY__", type="gender")
+#' save_api_key(key="__YOUR_API_KEY__", type="gender")
 #' }
 #' @export
 
-save_key <- function(key, type) {
+save_api_key <- function(key, type) {
   env_name <- switch(type,
                      "genderize" = "GENDERIZE_KEY_PAT",
                      "agify" = "AGIFY_KEY_PAT",
@@ -292,8 +293,8 @@ save_key <- function(key, type) {
 #' @description Function to get the previously saved API key. It has the
 #'   advantage that it is not necessary to explicitly publish the key in the
 #'   users code. Just do it one time and you're set. To save an API, use the
-#'   \code{\link{save_key}} function. To remove a previously saved key, use
-#'   the \code{\link{remove_key}} function.
+#'   \code{\link{save_api_key}} function. To remove a previously saved key, use
+#'   the \code{\link{remove_api_key}} function.
 #' @param type Obligatory parameter to define which key to retrieve: \itemize{
 #'   \item \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io
 #'   API key \item \code{nationalize} - Nationalize.io API key }
@@ -301,18 +302,18 @@ save_key <- function(key, type) {
 #'   saved, returns \code{NULL} value.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @seealso \code{\link{save_key}}, \code{\link{remove_key}}
+#' @seealso \code{\link{save_api_key}}, \code{\link{remove_api_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' get_key(type="genderize")
-#' get_key(type="agify")
-#' get_key(type="nationalize")
+#' get_api_key(type="genderize")
+#' get_api_key(type="agify")
+#' get_api_key(type="nationalize")
 #' }
 #' @export
 
-get_key <- function(type) {
+get_api_key <- function(type) {
   env_name <- switch(type,
                      "genderize" = "GENDERIZE_KEY_PAT",
                      "agify" = "AGIFY_KEY_PAT",
@@ -327,26 +328,27 @@ get_key <- function(type) {
 #' @title Removes saved API key
 #' @description Removes saved API keys for the DemografixeR APIs (Genderize.io,
 #'   Agify.io, Nationalize.io).
-#' @param type Choose the type of API key to remove from the environment variables:
-#'   \itemize{ \item \code{genderize} - Genderize.io API key \item \code{agify}
-#'   - Agify.io API key \item \code{nationalize} - Nationalize.io API key }
-#' @param verbose \code{Logical} parameter to define if a verbose message should be
-#'   printed. By default set to \code{TRUE}.
+#' @param type Choose the type of API key to remove from the environment
+#'   variables: \itemize{ \item \code{genderize} - Genderize.io API key \item
+#'   \code{agify} - Agify.io API key \item \code{nationalize} - Nationalize.io
+#'   API key }
+#' @param verbose \code{Logical} parameter to define if a verbose message should
+#'   be printed. By default set to \code{TRUE}.
 #' @return Does not return any object.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
-#' @seealso \code{\link{save_key}}, \code{\link{get_key}}
+#' @seealso \code{\link{save_api_key}}, \code{\link{get_api_key}}
 #' @section Warning: Please be careful when dealing with API keys and other
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' remove_key(type="genderize")
-#' remove_key(type="agify")
-#' remove_key(type="nationalize")
+#' remove_api_key(type="genderize")
+#' remove_api_key(type="agify")
+#' remove_api_key(type="nationalize")
 #' }
 #' @export
 
-remove_key <- function(type, verbose = TRUE) {
+remove_api_key <- function(type, verbose = TRUE) {
   env_name <- switch(type,
                      "genderize" = "GENDERIZE_KEY_PAT",
                      "agify" = "AGIFY_KEY_PAT",
@@ -416,9 +418,15 @@ api_request <- function(x, type, country_id=NULL, sliced=TRUE, apikey=NULL) {
                    httr::http_status(request$status_code)$message),
            call. = FALSE)
   }
-  content$api_rate_limit <- as.integer(request$headers[["x-rate-limit-limit"]])
-  content$api_rate_remaining <- as.integer(request$headers[["x-rate-limit-remaining"]])
-  content$api_rate_reset <- as.integer(request$headers[["x-rate-reset"]])
+  content$api_rate_limit <- as.integer(
+    request$headers[["x-rate-limit-limit"]]
+    )
+  content$api_rate_remaining <- as.integer(
+    request$headers[["x-rate-limit-remaining"]]
+    )
+  content$api_rate_reset <- as.integer(
+    request$headers[["x-rate-reset"]]
+    )
   content$api_request_timestamp <- request$date
 
   #More than one row to NA
@@ -487,8 +495,10 @@ country_distributor <- function(x,
                                 apikey = NULL) {
   if (!is.null(country_id)) {
     if (!(length(country_id) %in% c(1, length(x)))) {
-      stop("<country_id must be a single string or a multistring with the same length as x>",
-           call. = FALSE)
+      stop(
+        "<country_id must be single string or multistring with length of x>",
+           call. = FALSE
+        )
     }
     df <- data.frame(id = seq_along(x),
                      x = x,

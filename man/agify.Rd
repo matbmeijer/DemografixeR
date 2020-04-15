@@ -8,7 +8,7 @@ agify(
   name,
   country_id = NULL,
   simplify = TRUE,
-  apikey = get_key("agify"),
+  apikey = get_api_key("agify"),
   meta = FALSE
 )
 }
@@ -33,7 +33,7 @@ vector.}
 to 1000 names/day. No sign up or API key needed. Yet, if more requests
 would be needed, visit the \href{https://store.agify.io/}{agify.io store}
 and the obtained API key can be passed through this parameter. The API can
-also be saved one time through the \code{\link{save_key}} function, so it
+also be saved one time through the \code{\link{save_api_key}} function, so it
 is not necessary to call again.}
 
 \item{meta}{\code{Logical} parameter to define if API related information
@@ -62,7 +62,7 @@ The function automatically handles pagination (max. 10 names per API
 \section{Warning}{
  Please be aware about local privacy protection regulations
   such as
-  \href{https://en.wikipedia.org/wiki/General_Data_Protection_Regulation}{GDPR}
+  \href{https://tinyurl.com/odvcvq8}{GDPR}
    when dealing with personal data.
 }
 

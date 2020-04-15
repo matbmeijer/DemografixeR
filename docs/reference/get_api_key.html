@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>"Nationalize" function — nationalize • DemografixeR</title>
+<title>Get previously saved API keys — get_api_key • DemografixeR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,12 @@
 
 
 
-<meta property="og:title" content=""Nationalize" function — nationalize" />
-<meta property="og:description" content="Returns the estimated nationality from a given name." />
+<meta property="og:title" content="Get previously saved API keys — get_api_key" />
+<meta property="og:description" content="Function to get the previously saved API key. It has the
+  advantage that it is not necessary to explicitly publish the key in the
+  users code. Just do it one time and you're set. To save an API, use the
+  save_api_key function. To remove a previously saved key, use
+  the remove_api_key function." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -119,94 +123,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>"Nationalize" function</h1>
+    <h1>Get previously saved API keys</h1>
     <small class="dont-index">Source: <a href='https://github.com/matbmeijer/DemografixeR/blob/master/R/api_structure.R'><code>R/api_structure.R</code></a></small>
-    <div class="hidden name"><code>nationalize.Rd</code></div>
+    <div class="hidden name"><code>get_api_key.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns the estimated nationality from a given name.</p>
+    <p>Function to get the previously saved API key. It has the
+  advantage that it is not necessary to explicitly publish the key in the
+  users code. Just do it one time and you're set. To save an API, use the
+  <code><a href='save_api_key.html'>save_api_key</a></code> function. To remove a previously saved key, use
+  the <code><a href='remove_api_key.html'>remove_api_key</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nationalize</span>(
-  <span class='no'>name</span>,
-  <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>sliced</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>apikey</span> <span class='kw'>=</span> <span class='fu'><a href='get_api_key.html'>get_api_key</a></span>(<span class='st'>"genderize"</span>),
-  <span class='kw'>meta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_api_key</span>(<span class='no'>type</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>name</th>
-      <td><p>Name/s to estimate the nationality. Can be a single
-<code>character</code> string or a <code>character</code> vector. Obligatory parameter.</p></td>
-    </tr>
-    <tr>
-      <th>simplify</th>
-      <td><p>Defines if the result should be returned as a single vector
-or a <code>data.frame</code> with additional information. By default set to
-<code>TRUE</code>, which returns a vector.</p></td>
-    </tr>
-    <tr>
-      <th>sliced</th>
-      <td><p>Names can have multiple estimated nationalities ranked by
-probability. This <code>logical</code> parameter allows to "slice"/keep only the
-parameter with the highest probability to keep a single estimate for each
-name. By default set to <code>TRUE</code>.</p></td>
-    </tr>
-    <tr>
-      <th>apikey</th>
-      <td><p>Optional paramter to pass the API key. The API is free for up
-to 1000 names/day. No sign up or API key needed. Yet, if more requests
-would be needed, visit the
-<a href='https://store.nationalize.io/'>nationalize.io store</a> and the obtained
-API key can be passed through this parameter. The API can also be saved one
-time through the <code><a href='save_api_key.html'>save_api_key</a></code> function, so it is not necessary to
-call again.</p></td>
-    </tr>
-    <tr>
-      <th>meta</th>
-      <td><p><code>Logical</code> parameter to define if API related information
-should be returned. By default set to <code>FALSE</code>. Returns information
-about:</p><ul>
-<li><p>The amount of names available in the current time
-window</p></li>
-<li><p>The number of names left in the current time window</p></li>
-<li><p>Seconds remaining until a new time window opens</p></li>
+      <th>type</th>
+      <td><p>Obligatory parameter to define which key to retrieve:</p><ul>
+<li><p><code>genderize</code> - Genderize.io API key</p></li>
+<li><p><code>agify</code> - Agify.io
+API key</p></li>
+<li><p><code>nationalize</code> - Nationalize.io API key</p></li>
 </ul></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Returns the estimated nationality as the common
-  <a href='http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'>ISO 3166-1 alpha-2</a>
-  country code. The result can be in a single <code>character</code> vector form or
-  a <code>data.frame</code> with additional information.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The function automatically handles pagination (max. 10 names per API
-  request), missing values &amp; duplicated values. If a name is duplicated for
-  the same <code>country_id</code> (if the parameter has been passed), it will
-  handle the request as a a single name to save requests, returning the same
-  value for the duplicated names. To see more details about the API
-  documentation, visit the <a href='https://nationalize.io/'>nationalize.io
-  website</a>.</p>
+    <p>Returns the saved API key in the environment. If no API key has been
+  saved, returns <code>NULL</code> value.</p>
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
-    <p>Please be aware about local privacy protection regulations
-  such as
-  <a href='https://tinyurl.com/odvcvq8'>GDPR</a>
-   when dealing with personal data.</p>
+    <p>Please be careful when dealing with API keys and other
+  secrets &amp; tokens - keep them private and do not publish them.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='genderize.html'>genderize</a></code>, <code><a href='agify.html'>agify</a></code></p></div>
+    <div class='dont-index'><p><code><a href='save_api_key.html'>save_api_key</a></code>, <code><a href='remove_api_key.html'>remove_api_key</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nationalize</span>(<span class='kw'>name</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Ben"</span>, <span class='st'>"Maria"</span>))</div><div class='output co'>#&gt; [1] "AU" "CY"</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_api_key</span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"genderize"</span>)
+<span class='fu'>get_api_key</span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"agify"</span>)
+<span class='fu'>get_api_key</span>(<span class='kw'>type</span><span class='kw'>=</span><span class='st'>"nationalize"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
