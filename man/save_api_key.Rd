@@ -7,15 +7,15 @@
 save_api_key(key, type)
 }
 \arguments{
-\item{key}{API key obtained from the specific website. Must be one of the
-following values: \itemize{ \item \code{gender} -
-\href{https://store.agify.io/signup}{Genderize} \item \code{age} -
-\href{https://store.agify.io/signup}{Agify} \item \code{nationality} -
-\href{https://nationalize.io/signup}{Nationalize} }}
+\item{key}{API key obtained from the specific website. Visit the following
+wbsites to obtain an API key: \itemize{ \item
+\href{https://store.agify.io/signup}{genderize.io} \item
+\href{https://store.agify.io/signup}{agify.io} \item
+\href{https://nationalize.io/signup}{nationalize.io}}}
 
-\item{type}{Must be one of the following: \itemize{ \item \code{genderize} -
-Genderize.io API key \item \code{agify} - Agify.io API key \item
-\code{nationalize} - Nationalize.io API key }}
+\item{type}{Must be one of the following values: \itemize{ \item
+\code{genderize} - Genderize.io API key \item \code{agify} - Agify.io API
+key \item \code{nationalize} - Nationalize.io API key }}
 }
 \value{
 Does save the key in the environment.

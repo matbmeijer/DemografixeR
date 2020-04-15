@@ -260,14 +260,14 @@ supported_countries <- function(type) {
 #'   overwrite the old key. To explictly print the key, use the
 #'   \code{\link{get_api_key}} function. To remove the key use the
 #'   \code{\link{remove_api_key}} function.
-#' @param key API key obtained from the specific website. Must be one of the
-#'   following values: \itemize{ \item \code{gender} -
-#'   \href{https://store.agify.io/signup}{Genderize} \item \code{age} -
-#'   \href{https://store.agify.io/signup}{Agify} \item \code{nationality} -
-#'   \href{https://nationalize.io/signup}{Nationalize} }
-#' @param type Must be one of the following: \itemize{ \item \code{genderize} -
-#'   Genderize.io API key \item \code{agify} - Agify.io API key \item
-#'   \code{nationalize} - Nationalize.io API key }
+#' @param key API key obtained from the specific website. Visit the following
+#'   wbsites to obtain an API key: \itemize{ \item
+#'   \href{https://store.agify.io/signup}{genderize.io} \item
+#'   \href{https://store.agify.io/signup}{agify.io} \item
+#'   \href{https://nationalize.io/signup}{nationalize.io}}
+#' @param type Must be one of the following values: \itemize{ \item
+#'   \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io API
+#'   key \item \code{nationalize} - Nationalize.io API key }
 #' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
@@ -285,8 +285,7 @@ save_api_key <- function(key, type) {
                      "genderize" = "GENDERIZE_KEY_PAT",
                      "agify" = "AGIFY_KEY_PAT",
                      "nationalize" = "NATIONALIZE_KEY_PAT")
-  names(key) <- env_name
-  Sys.setenv(key)
+  Sys.setenv(env_name=key)
 }
 
 #' @title Get previously saved API keys
