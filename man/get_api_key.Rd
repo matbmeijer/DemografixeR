@@ -4,12 +4,7 @@
 \alias{get_api_key}
 \title{Get previously saved API keys}
 \usage{
-get_api_key(type)
-}
-\arguments{
-\item{type}{Obligatory parameter to define which key to retrieve: \itemize{
-\item \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io
-API key \item \code{nationalize} - Nationalize.io API key }}
+get_api_key()
 }
 \value{
 Returns the saved API key in the environment. If no API key has been

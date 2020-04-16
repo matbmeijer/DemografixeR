@@ -1,0 +1,258 @@
+---
+title: "Introduction to DemografixeR"
+author: "Matthias Brenninkmeijer"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to DemographixeR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+Let's illustrate the usefullness of _DemografixeR_ with a simple example. Say we know the first name of a sample of customers, but useful information about gender, age or nationality is unavailable:
+
+```{r plot_names, echo=FALSE, cache=FALSE}
+cust_names <- c("Maria", "Ben", "Claudia", "Adam", "Hannah", "Robert")
+cust_names_df <- data.frame(matrix(cust_names,
+                                   nrow = 1,
+                                   ncol = 6,
+                                   byrow = TRUE), stringsAsFactors = FALSE)
+
+row.names(cust_names_df) <- "**Customers:**"
+knitr::kable(cust_names_df, col.names = NULL)
+```
+
+It's common knowledge that names have a strong sociocultural influence - names' popularity vary across time and location - and these naming conventions may be good predictors for other useful variables such as **gender**, **age** & **nationality**. Here's where _DemografixeR_ comes in:
+
+> "_DemografixeR_ allows R users to connect directly to the (1) [_genderize.io API_](https://genderize.io), the (2) [_agify.io API_](https://agify.io/) and the (3) [_nationalize.io API_](https://nationalize.io/) to obtain the (1) **gender**, (2) **age** & (3) **nationality** of a name in a tidy format."
+
+_DemografixeR_ deals with the hassle of API pagination, missing values, duplicated names, trimming whitespace and parsing the results in a tidy format, giving the user time to analyze instead of tidying the data.
+
+To do so, _DemografixeR_ is based on these three main pillar functions, which we will use to predict the key demographic variables of the previous sample of customers, so that we can 'fix' the missing demographic information:
+
+``` {r package structure, echo=FALSE, cache=FALSE}
+structure_df <- data.frame(
+  API = c("https://genderize.io","https://agify.io","https://nationalize.io"),
+  `R function` = c("`genderize(name)`", "`agify(name)`", "`nationalize(name)`"),
+  `Estimated variable` = c("Gender", "Age", "Nationality"), stringsAsFactors = FALSE)
+
+colnames(structure_df) <- gsub("\\.", " ", colnames(structure_df))
+
+knitr::kable(structure_df, row.names = FALSE)
+
+```
+
+They all work similarly, and allow to be integrated in multiple workflows. Using the previous group of customers, we can obtain the following results:
+
+```{r result, echo=FALSE, cache=FALSE}
+library("DemografixeR")
+cust_names<-c("Maria", "Ben", "Claudia", "Adam", "Hannah", "Robert")
+r1 <- genderize(cust_names)
+r2 <- agify(cust_names)
+r3 <- nationalize(cust_names)
+
+res_df <- rbind(
+                data.frame(t(matrix(cust_names)), stringsAsFactors = FALSE),
+                data.frame(t(matrix(r1)), stringsAsFactors = FALSE),
+                data.frame(t(matrix(r2)), stringsAsFactors = FALSE),
+                data.frame(t(matrix(r3)), stringsAsFactors = FALSE))
+
+row.names(res_df) <- c("**Customers:**",
+                       "**Estimated gender:**",
+                       "**Estimated age:**",
+                       "**Estimated nationality:**")
+
+knitr::kable(res_df, col.names = NULL)
+
+```
+
+To see how to get to these results, read on!
+
+## Get Started
+
+### Setup
+
+First, we need to load the package:
+
+```{r setup, cache=FALSE}
+library("DemografixeR")
+
+```
+
+### API credentials
+
+The following step is optional, it is only necessary if you plan to estimate gender, age or nationality for more than 1000 different names a day. To do so, you need to obtain an API key from the following link:
+
+* [_genderize.io store_](https://store.genderize.io)
+
+To use the API key, simply save it only once with the **`save_api_key(key)`** and you're all set. All the funtions will automatically retrieve the key once saved:
+
+```{r save API function, eval=FALSE}
+save_api_key(key = "__YOUR_API_KEY__")
+
+```
+
+Please be careful when dealing with secrets/tokens/credentials and do not share them publicly. Yet, if you wish explicitly know which API key you've saved, retrieve it with the **`get_api_key()`** function. To fully remove the saved key use the **`remove_api_key()`** function. 
+
+### Gender
+
+We start by **predicting the gender** from our customers. For this we use the **`genderize(name)`** function:
+
+```{r genderize, eval=TRUE, echo=TRUE, cache=FALSE}
+customers_names <- c("Maria", "Ben", "Claudia", 
+                     "Adam", "Hannah", "Robert")
+customers_predicted_gender <- genderize(name = customers_names)
+customers_predicted_gender # Print results
+
+```
+
+We see that `genderize(name)` returns the estimated gender for each name as a `character` vector:
+
+```{r genderize_class, cache=FALSE}
+class(customers_predicted_gender)
+
+```
+
+Yet, it is also possible to obtain a detailed `data.frame` object with additional information. _DemografixeR_ also allows to use 'pipes':
+
+```{r genderize_dataframe, cache=FALSE}
+gender_df <- genderize(name = customers_names, simplify = FALSE)
+customers_names %>% 
+  genderize(simplify = FALSE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+### Age
+
+We continue with the **age** estimation of our customers. As with the **`genderize(name)`** function, the `simplify` parameter also works with the **`agify(name)`** function to retrieve a `data.frame`:
+
+```{r agify, cache=FALSE}
+customers_predicted_age <- agify(name = customers_names)
+customers_predicted_age
+
+customers_names %>% 
+  agify(simplify = FALSE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+
+### Nationality
+
+Last but not least, we finish with the **nationality** extrapolation. Equally as with the **`genderize(name)`** and **`agify(name)`** function, the `simplify` parameter also works with the **`nationalize(name)`** function to retrieve a `data.frame`:
+
+
+```{r nationality, cache=FALSE}
+customers_predicted_nationality <- nationalize(name = customers_names)
+customers_predicted_nationality
+
+customers_names %>% 
+  nationalize(simplify = FALSE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+### Other parameters
+
+#### **`country_id`** parameter
+
+Responses of names will in a lot of cases be more accurate if the data is narrowed to a specific country. Luckily, both the **`genderize(name)`** and **`agify(name)`** function support passing a country code parameter (following the common ISO 3166-1 alpha-2 country code convention). For obvious reasons the **`nationalize(name)`** does not:
+
+```{r country_id, cache=FALSE}
+us_customers_predicted_gender<-genderize(name = customers_names, 
+                                         country_id = "US")
+us_customers_predicted_gender
+
+us_customers_predicted_age<-agify(name = customers_names,
+                                  country_id = "US")
+us_customers_predicted_age
+
+```
+
+To obtain a `data.frame` of all supported countries, use the **`supported_countries(type)`** function. Here's an example of 5 countries:
+
+```{r supported_countries, cache=FALSE}
+supported_countries(type = "genderize") %>% 
+  head(5) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+In this case the `total` column reflects the number of observations the API has for each country.
+The beauty of the `country_id` parameter lies in that it allows to pass a single `character` string or a `character` vector with the same length as the `name` parameter. An example illustrates this better:
+
+```{r country_id_multi, cache=FALSE}
+agify(name = c("Hannah", "Ben"),
+      country_id = c("US", "GB"),
+      simplify = FALSE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+In this previous example we passed two names - Hannah & Ben - and two country codes - US & GB. Thus, the functions allow to pass vectorised vectors - this is especially useful for workflows where we are using a `data.frame` with a variable with names and another variable containing country codes.
+
+#### **`meta`** parameter
+
+All three functions have a parameter defined as ``meta``, which returns information about the API itself, such as:
+
+* The amount of names available in the current time window
+* The number of names left in the current time window
+* Seconds remaining until a new time window opens
+
+Here's an example:
+
+```{r meta_parameter, cache=FALSE}
+genderize(name = "Hannah", 
+          simplify = FALSE, 
+          meta = TRUE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+#### **`sliced`** parameter
+
+The **`nationalize(name)`** function has the useful **`sliced`** parameter. Logically, names can have multiple estimated nationalities - and the **`nationalize(name)`** function automatically ranks them by probability. This logical parameter allows to 'slice'/keep only the value with the highest probability to keep a single estimate for each name (one country per name) - and is set by default to `TRUE`. But you may wish to see all to potential countries a name can be associated to. For this simply set the parameter to `FALSE`:
+
+```{r sliced_false, cache=FALSE}
+nationalize(name = "Matthias", 
+            simplify = FALSE, 
+            sliced=FALSE) %>% 
+  knitr::kable(row.names = FALSE)
+
+```
+
+In the last example you see that instead of returning a single country code, it returns multiple country codes with their associated probability.
+
+## Customers example
+
+Let's replicate the initial example with our group of customers. Voilà!
+
+```{r customers_end, echo=TRUE, cache=FALSE}
+library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
+
+df<-data.frame("Customers:"=c("Maria", "Ben", "Claudia",
+                           "Adam", "Hannah", "Robert"), 
+               stringsAsFactors = FALSE,
+               check.names = FALSE)
+
+df <- df %>% mutate(`Estimated gender:`= genderize(`Customers:`),
+                    `Estimated age:`= agify(`Customers:`),
+                    `Estimated nationality:`= nationalize(`Customers:`))
+
+df %>% t() %>% knitr::kable(col.names = NULL)
+
+```
+
+## Further information
+
+For more information access the package documentation at [https://matbmeijer.github.io/DemografixeR](https://matbmeijer.github.io/DemografixeR/).

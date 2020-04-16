@@ -8,7 +8,7 @@ nationalize(
   name,
   simplify = TRUE,
   sliced = TRUE,
-  apikey = get_api_key("genderize"),
+  apikey = get_api_key(),
   meta = FALSE
 )
 }

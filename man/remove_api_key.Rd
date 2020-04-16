@@ -4,14 +4,9 @@
 \alias{remove_api_key}
 \title{Removes saved API key}
 \usage{
-remove_api_key(type, verbose = TRUE)
+remove_api_key(verbose = TRUE)
 }
 \arguments{
-\item{type}{Choose the type of API key to remove from the environment
-variables: \itemize{ \item \code{genderize} - Genderize.io API key \item
-\code{agify} - Agify.io API key \item \code{nationalize} - Nationalize.io
-API key }}
-
 \item{verbose}{\code{Logical} parameter to define if a verbose message should
 be printed. By default set to \code{TRUE}.}
 }
@@ -29,9 +24,7 @@ Removes saved API keys for the DemografixeR APIs (Genderize.io,
 
 \examples{
 \dontrun{
-remove_api_key(type="genderize")
-remove_api_key(type="agify")
-remove_api_key(type="nationalize")
+remove_api_key()
 }
 }
 \seealso{

@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700");
+@import url('https://fonts.googleapis.com/css?family=Fauna+One');
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+  font-family: "Fauna One", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+pre, code {
+  font-family: Consolas, Inconsolata, monospace;
+}
+
+.navbar-default {
+  background-color: #f3f3f3;
+    border-color: #eee;
+}
+
+#tocnav ul ul {
+    margin-left: 25px;
+}

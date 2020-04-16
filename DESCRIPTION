@@ -20,4 +20,8 @@ Imports:
 RoxygenNote: 7.1.0
 Suggests: 
     covr,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown,
+    dplyr
+VignetteBuilder: knitr

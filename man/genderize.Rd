@@ -8,7 +8,7 @@ genderize(
   name,
   country_id = NULL,
   simplify = TRUE,
-  apikey = get_api_key("genderize"),
+  apikey = get_api_key(),
   meta = FALSE
 )
 }

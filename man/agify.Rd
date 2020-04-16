@@ -8,7 +8,7 @@ agify(
   name,
   country_id = NULL,
   simplify = TRUE,
-  apikey = get_api_key("agify"),
+  apikey = get_api_key(),
   meta = FALSE
 )
 }

@@ -48,7 +48,7 @@
 agify <- function(name,
                   country_id = NULL,
                   simplify = TRUE,
-                  apikey = get_api_key("agify"),
+                  apikey = get_api_key(),
                   meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "age",
@@ -120,7 +120,7 @@ agify <- function(name,
 genderize <- function(name,
                       country_id = NULL,
                       simplify = TRUE,
-                      apikey = get_api_key("genderize"),
+                      apikey = get_api_key(),
                       meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "gender",
@@ -187,13 +187,13 @@ genderize <- function(name,
 nationalize <- function(name,
                         simplify = TRUE,
                         sliced = TRUE,
-                        apikey = get_api_key("genderize"),
+                        apikey = get_api_key(),
                         meta = FALSE) {
   y <- country_distributor(x = name,
                            type = "nationality",
                            country_id = NULL,
                            sliced = sliced,
-                           apikey = get_api_key("nationalize"))
+                           apikey = apikey)
   if (simplify) {
     y <- y$country_id
   } else {
@@ -253,21 +253,18 @@ supported_countries <- function(type) {
 
 
 #' @title Saves the API key for future functions
-#' @description Saves the different genderize.io, agify.io & nationalize.io API
-#'   keys in the users environment. It has the advantage that it is not
+#' @description Saves the all in one genderize.io, agify.io & nationalize.io API
+#'   key in the users environment. It has the advantage that it is not
 #'   necessary to explicitly publish the key in the users code. Just do it one
 #'   time and you're set. To update the key just save again and it will
 #'   overwrite the old key. To explictly print the key, use the
 #'   \code{\link{get_api_key}} function. To remove the key use the
 #'   \code{\link{remove_api_key}} function.
-#' @param key API key obtained from the specific website. Visit the following
-#'   wbsites to obtain an API key: \itemize{ \item
+#' @param key API key obtained from the specific website. Visit the one of the followin
+#'   websites to obtain an API key: \itemize{ \item
 #'   \href{https://store.agify.io/signup}{genderize.io} \item
 #'   \href{https://store.agify.io/signup}{agify.io} \item
 #'   \href{https://nationalize.io/signup}{nationalize.io}}
-#' @param type Must be one of the following values: \itemize{ \item
-#'   \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io API
-#'   key \item \code{nationalize} - Nationalize.io API key }
 #' @return Does save the key in the environment.
 #' @author Matthias Brenninkmeijer -
 #'   \href{https://github.com/matbmeijer}{https://github.com/matbmeijer}
@@ -276,16 +273,12 @@ supported_countries <- function(type) {
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' save_api_key(key="__YOUR_API_KEY__", type="gender")
+#' save_api_key(key="__YOUR_API_KEY__")
 #' }
 #' @export
 
-save_api_key <- function(key, type) {
-  env_name <- switch(type,
-                     "genderize" = "GENDERIZE_KEY_PAT",
-                     "agify" = "AGIFY_KEY_PAT",
-                     "nationalize" = "NATIONALIZE_KEY_PAT")
-  Sys.setenv(env_name=key)
+save_api_key <- function(key) {
+  Sys.setenv("DEMOGRAFIXER_PAT"=key)
 }
 
 #' @title Get previously saved API keys
@@ -294,9 +287,6 @@ save_api_key <- function(key, type) {
 #'   users code. Just do it one time and you're set. To save an API, use the
 #'   \code{\link{save_api_key}} function. To remove a previously saved key, use
 #'   the \code{\link{remove_api_key}} function.
-#' @param type Obligatory parameter to define which key to retrieve: \itemize{
-#'   \item \code{genderize} - Genderize.io API key \item \code{agify} - Agify.io
-#'   API key \item \code{nationalize} - Nationalize.io API key }
 #' @return Returns the saved API key in the environment. If no API key has been
 #'   saved, returns \code{NULL} value.
 #' @author Matthias Brenninkmeijer -
@@ -312,12 +302,8 @@ save_api_key <- function(key, type) {
 #' }
 #' @export
 
-get_api_key <- function(type) {
-  env_name <- switch(type,
-                     "genderize" = "GENDERIZE_KEY_PAT",
-                     "agify" = "AGIFY_KEY_PAT",
-                     "nationalize" = "NATIONALIZE_KEY_PAT")
-  key <- Sys.getenv(env_name, NA)
+get_api_key <- function() {
+  key <- Sys.getenv("DEMOGRAFIXER_PAT", NA)
   if (is.na(key)) {
     key <- NULL
   }
@@ -327,10 +313,6 @@ get_api_key <- function(type) {
 #' @title Removes saved API key
 #' @description Removes saved API keys for the DemografixeR APIs (Genderize.io,
 #'   Agify.io, Nationalize.io).
-#' @param type Choose the type of API key to remove from the environment
-#'   variables: \itemize{ \item \code{genderize} - Genderize.io API key \item
-#'   \code{agify} - Agify.io API key \item \code{nationalize} - Nationalize.io
-#'   API key }
 #' @param verbose \code{Logical} parameter to define if a verbose message should
 #'   be printed. By default set to \code{TRUE}.
 #' @return Does not return any object.
@@ -341,24 +323,16 @@ get_api_key <- function(type) {
 #'   secrets & tokens - keep them private and do not publish them.
 #' @examples
 #' \dontrun{
-#' remove_api_key(type="genderize")
-#' remove_api_key(type="agify")
-#' remove_api_key(type="nationalize")
+#' remove_api_key()
 #' }
 #' @export
 
-remove_api_key <- function(type, verbose = TRUE) {
-  env_name <- switch(type,
-                     "genderize" = "GENDERIZE_KEY_PAT",
-                     "agify" = "AGIFY_KEY_PAT",
-                     "nationalize" = "NATIONALIZE_KEY_PAT")
-  Sys.unsetenv(env_name)
+remove_api_key <- function(verbose = TRUE) {
+  Sys.unsetenv("DEMOGRAFIXER_PAT")
   if (verbose) {
     cat(
       sprintf(
-        "<%s key saved at environment as %s has been removed>",
-        type,
-        env_name)
+        "<API key saved as DEMOGRAFIXER_PAT has been removed>")
       )
     }
 }

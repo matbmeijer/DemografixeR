@@ -4,25 +4,21 @@
 \alias{save_api_key}
 \title{Saves the API key for future functions}
 \usage{
-save_api_key(key, type)
+save_api_key(key)
 }
 \arguments{
-\item{key}{API key obtained from the specific website. Visit the following
-wbsites to obtain an API key: \itemize{ \item
+\item{key}{API key obtained from the specific website. Visit the one of the followin
+websites to obtain an API key: \itemize{ \item
 \href{https://store.agify.io/signup}{genderize.io} \item
 \href{https://store.agify.io/signup}{agify.io} \item
 \href{https://nationalize.io/signup}{nationalize.io}}}
-
-\item{type}{Must be one of the following values: \itemize{ \item
-\code{genderize} - Genderize.io API key \item \code{agify} - Agify.io API
-key \item \code{nationalize} - Nationalize.io API key }}
 }
 \value{
 Does save the key in the environment.
 }
 \description{
-Saves the different genderize.io, agify.io & nationalize.io API
-  keys in the users environment. It has the advantage that it is not
+Saves the all in one genderize.io, agify.io & nationalize.io API
+  key in the users environment. It has the advantage that it is not
   necessary to explicitly publish the key in the users code. Just do it one
   time and you're set. To update the key just save again and it will
   overwrite the old key. To explictly print the key, use the
@@ -36,7 +32,7 @@ Saves the different genderize.io, agify.io & nationalize.io API
 
 \examples{
 \dontrun{
-save_api_key(key="__YOUR_API_KEY__", type="gender")
+save_api_key(key="__YOUR_API_KEY__")
 }
 }
 \seealso{

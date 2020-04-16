@@ -44,31 +44,20 @@ test_that("supported_countries", {
 test_that("save_api_key", {
   expect_error(save_api_key())
 
-  expect_true(save_api_key(key = "test", type = "genderize"))
-  expect_true(save_api_key(key = "test", type = "agify"))
-  expect_true(save_api_key(key = "test", type = "nationalize"))
+  expect_true(save_api_key(key = "test"))
 })
 
 ################################ get_api_key() #################################
 test_that("get_api_key", {
-  expect_error(get_api_key())
-
-  expect_true(is.null(get_api_key(type = "genderize")) || is.character(get_api_key(type = "genderize")))
-  expect_true(is.null(get_api_key(type = "agify")) || is.character(get_api_key(type = "agify")))
-  expect_true(is.null(get_api_key(type = "nationalize")) || is.character(get_api_key(type = "nationalize")))
+  expect_true(is.null(get_api_key()) || is.character(get_api_key()))
 })
 
 ############################### remove_api_key() ###############################
 test_that("remove_api_key", {
-  expect_error(remove_api_key())
 
-  expect_output(remove_api_key(type ="genderize"))
-  expect_output(remove_api_key(type ="agify"))
-  expect_output(remove_api_key(type ="nationalize"))
+  expect_output(remove_api_key())
 
-  expect_null(remove_api_key(type ="genderize", verbose = FALSE))
-  expect_null(remove_api_key(type ="agify", verbose = FALSE))
-  expect_null(remove_api_key(type ="nationalize", verbose = FALSE))
+  expect_null(remove_api_key(verbose = FALSE))
 })
 
 ################################### add_id() ###################################
