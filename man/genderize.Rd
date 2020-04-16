@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_structure.R
 \name{genderize}
 \alias{genderize}
-\title{"Genderize" function}
+\title{'Genderizes' a name}
 \usage{
 genderize(
   name,

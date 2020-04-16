@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_structure.R
 \name{agify}
 \alias{agify}
-\title{"Agify" function}
+\title{'Agifies' a name}
 \usage{
 agify(
   name,

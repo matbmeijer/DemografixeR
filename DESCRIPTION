@@ -1,13 +1,13 @@
 Package: DemografixeR
-Title: Estimate gender, age nationality from a name. API wrapper for the genderize.io, agify.io & nationalize.io APIs
+Title: Extrapolate Gender, Age and Nationality of a Name
 Version: 0.1.0
 Authors@R: 
     person(given = "Matthias",
            family = "Brenninkmeijer",
            role = c("aut", "cre"),
            email = "matthias@brennotten.net")
-Description: Connects to the genderize.io, agify.io & nationalize.io APIs to
-    estimate gender, age and nationality based on a given name.
+Description: Connects to the 'genderize.io', 'agify.io' and 'nationalize.io' APIs to
+    estimate gender, age and nationality of a first name.
 License: MIT + file LICENSE
 URL: https://matbmeijer.github.io/DemografixeR, https://github.com/matbmeijer/DemografixeR
 BugReports: https://github.com/matbmeijer/DemografixeR/issues

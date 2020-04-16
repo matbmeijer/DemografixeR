@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_structure.R
 \name{nationalize}
 \alias{nationalize}
-\title{"Nationalize" function}
+\title{'Nationalizes' a name}
 \usage{
 nationalize(
   name,

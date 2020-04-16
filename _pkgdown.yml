@@ -1,1 +1,5 @@
 destination: docs
+
+template:
+  params:
+    ganalytics: UA-163782273-1

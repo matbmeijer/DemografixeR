@@ -1,4 +1,4 @@
-#' @title "Agify" function
+#' @title 'Agifies' a name
 #' @description Function to estimate the age from a first name. Connects
 #'   directly to the \href{https://agify.io/}{agify.io API} sending a request
 #'   with a name and parses the response to return the predicted age.
@@ -66,7 +66,7 @@ agify <- function(name,
   return(y)
 }
 
-#' @title "Genderize" function
+#' @title 'Genderizes' a name
 #' @description Function to estimate the gender from a first name. Connects
 #'   directly to the \href{https://genderize.io/}{genderize.io API} sending a
 #'   request with a name and parses the response to return the predicted gender.
@@ -139,7 +139,7 @@ genderize <- function(name,
 }
 
 
-#' @title "Nationalize" function
+#' @title 'Nationalizes' a name
 #' @description Returns the estimated nationality from a given name.
 #' @param name Name/s to estimate the nationality. Can be a single
 #'   \code{character} string or a \code{character} vector. Obligatory parameter.
