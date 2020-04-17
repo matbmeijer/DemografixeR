@@ -102,10 +102,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                   83 |            58446 | 2020-04-17 07:45:53     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                   83 |            58446 | 2020-04-17 07:45:53     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                   83 |            58446 | 2020-04-17 07:45:53     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                   83 |            58446 | 2020-04-17 07:45:53     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
 
 ## Disclaimer
 
@@ -122,9 +122,11 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 ## Code of Conduct
 
 Please note that the ‘DemografixeR’ project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to
-this project, you agree to abide by its terms.
+[Contributor Code of
+Conduct](https://github.com/matbmeijer/DemografixeR/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 ## License
 
-[MIT © Matthias Brenninkmeijer](LICENSE.md)
+[MIT © Matthias
+Brenninkmeijer](https://github.com/matbmeijer/DemografixeR/blob/master/LICENSE.md)
