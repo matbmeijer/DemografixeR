@@ -12,13 +12,11 @@
 ^\.Rhistory$
 ^LICENSE\.md$
 ^\.api_key\.json$
-^NEWS\.md$
 ^CODE_OF_CONDUCT\.md$
 ^testing_building\.R$
 ^pkgdown$
 ^documentation_file\.R$
 ^cran-comments\.md$
-
 ^_pkgdown\.yml$
 ^docs$
 ^\.github$

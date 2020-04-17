@@ -8,3 +8,4 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+* On win server sometimes openssl gives problems (curl dependency). Yet tests with win-builder worked perfectly.
