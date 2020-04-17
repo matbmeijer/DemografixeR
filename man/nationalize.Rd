@@ -25,7 +25,7 @@ probability. This \code{logical} parameter allows to "slice"/keep only the
 parameter with the highest probability to keep a single estimate for each
 name. By default set to \code{TRUE}.}
 
-\item{apikey}{Optional paramter to pass the API key. The API is free for up
+\item{apikey}{Optional parameter to pass the API key. The API is free for up
 to 1000 names/day. No sign up or API key needed. Yet, if more requests
 would be needed, visit the
 \href{https://store.nationalize.io/}{nationalize.io store} and the obtained

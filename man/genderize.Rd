@@ -32,7 +32,7 @@ indicating the certainty of the assigned gender. Basically the ratio of
 male to females. \item The count representing the number of data rows
 examined in order to calculate the response. }}
 
-\item{apikey}{Optional paramter to pass the API key. The API is free for up
+\item{apikey}{Optional parameter to pass the API key. The API is free for up
 to 1000 names/day. No sign up or API key needed. Yet, if more requests
 would be needed, visit the \href{https://store.genderize.io/}{genderize.io
 store} and the obtained API key can be passed through this parameter. The

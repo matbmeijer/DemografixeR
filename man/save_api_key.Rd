@@ -7,7 +7,7 @@
 save_api_key(key)
 }
 \arguments{
-\item{key}{API key obtained from the specific website. Visit the one of the followin
+\item{key}{API key obtained from the specific website. Visit the one of the following
 websites to obtain an API key: \itemize{ \item
 \href{https://store.agify.io/signup}{genderize.io} \item
 \href{https://store.agify.io/signup}{agify.io} \item
@@ -21,7 +21,7 @@ Saves the all in one genderize.io, agify.io & nationalize.io API
   key in the users environment. It has the advantage that it is not
   necessary to explicitly publish the key in the users code. Just do it one
   time and you're set. To update the key just save again and it will
-  overwrite the old key. To explictly print the key, use the
+  overwrite the old key. To explicitly print the key, use the
   \code{\link{get_api_key}} function. To remove the key use the
   \code{\link{remove_api_key}} function.
 }

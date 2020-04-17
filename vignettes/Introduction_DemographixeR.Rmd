@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-Let's illustrate the usefullness of _DemografixeR_ with a simple example. Say we know the first name of a sample of customers, but useful information about gender, age or nationality is unavailable:
+Let's illustrate the usefulness of _DemografixeR_ with a simple example. Say we know the first name of a sample of customers, but useful information about gender, age or nationality is unavailable:
 
 ```{r plot_names, echo=FALSE, cache=FALSE}
 cust_names <- c("Maria", "Ben", "Claudia", "Adam", "Hannah", "Robert")
@@ -94,7 +94,7 @@ The following step is optional, it is only necessary if you plan to estimate gen
 
 * [_genderize.io store_](https://store.genderize.io)
 
-To use the API key, simply save it only once with the **`save_api_key(key)`** and you're all set. All the funtions will automatically retrieve the key once saved:
+To use the API key, simply save it only once with the **`save_api_key(key)`** and you're all set. All the functions will automatically retrieve the key once saved:
 
 ```{r save API function, eval=FALSE}
 save_api_key(key = "__YOUR_API_KEY__")
@@ -199,7 +199,7 @@ agify(name = c("Hannah", "Ben"),
 
 ```
 
-In this previous example we passed two names - Hannah & Ben - and two country codes - US & GB. Thus, the functions allow to pass vectorised vectors - this is especially useful for workflows where we are using a `data.frame` with a variable with names and another variable containing country codes.
+In this previous example we passed two names - Hannah & Ben - and two country codes - US & GB. Thus, the functions allow to pass vectorized vectors - this is especially useful for workflows where we are using a `data.frame` with a variable with names and another variable containing country codes.
 
 #### **`meta`** parameter
 

@@ -15,7 +15,7 @@
 #'   be returned as a \code{character} vector or a \code{data.frame} with
 #'   additional information. By default set to \code{TRUE}, which returns a
 #'   vector.
-#' @param apikey Optional paramter to pass the API key. The API is free for up
+#' @param apikey Optional parameter to pass the API key. The API is free for up
 #'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
 #'   would be needed, visit the \href{https://store.agify.io/}{agify.io store}
 #'   and the obtained API key can be passed through this parameter. The API can
@@ -86,7 +86,7 @@ agify <- function(name,
 #'   indicating the certainty of the assigned gender. Basically the ratio of
 #'   male to females. \item The count representing the number of data rows
 #'   examined in order to calculate the response. }
-#' @param apikey Optional paramter to pass the API key. The API is free for up
+#' @param apikey Optional parameter to pass the API key. The API is free for up
 #'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
 #'   would be needed, visit the \href{https://store.genderize.io/}{genderize.io
 #'   store} and the obtained API key can be passed through this parameter. The
@@ -150,7 +150,7 @@ genderize <- function(name,
 #'   probability. This \code{logical} parameter allows to "slice"/keep only the
 #'   parameter with the highest probability to keep a single estimate for each
 #'   name. By default set to \code{TRUE}.
-#' @param apikey Optional paramter to pass the API key. The API is free for up
+#' @param apikey Optional parameter to pass the API key. The API is free for up
 #'   to 1000 names/day. No sign up or API key needed. Yet, if more requests
 #'   would be needed, visit the
 #'   \href{https://store.nationalize.io/}{nationalize.io store} and the obtained
@@ -257,10 +257,10 @@ supported_countries <- function(type) {
 #'   key in the users environment. It has the advantage that it is not
 #'   necessary to explicitly publish the key in the users code. Just do it one
 #'   time and you're set. To update the key just save again and it will
-#'   overwrite the old key. To explictly print the key, use the
+#'   overwrite the old key. To explicitly print the key, use the
 #'   \code{\link{get_api_key}} function. To remove the key use the
 #'   \code{\link{remove_api_key}} function.
-#' @param key API key obtained from the specific website. Visit the one of the followin
+#' @param key API key obtained from the specific website. Visit the one of the following
 #'   websites to obtain an API key: \itemize{ \item
 #'   \href{https://store.agify.io/signup}{genderize.io} \item
 #'   \href{https://store.agify.io/signup}{agify.io} \item
