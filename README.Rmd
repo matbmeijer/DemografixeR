@@ -37,7 +37,7 @@ You can find all the necessary documentation about the package here:
 
 ## Installation
 
-You can install the released version of DemografixeR following these `R` commands:
+You can install the development version of DemografixeR following these `R` commands:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
