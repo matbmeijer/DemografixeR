@@ -9,3 +9,4 @@
 
 * This is a new release.
 * On win server sometimes openssl gives problems (curl dependency). Yet tests with win-builder worked perfectly.
+* Adapted DESCRIPTION file setting urls between angle brackets (<https:...>)
