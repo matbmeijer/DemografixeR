@@ -1,6 +1,8 @@
 ################################### agify() ####################################
+
 test_that("agify", {
   expect_error(agify())
+  skip_on_cran()
   expect_true(is.integer(agify("Maria")))
   expect_true(is.integer(agify("Maria", country_id = "ES")))
   expect_true(is.data.frame(agify("Maria", simplify = FALSE)))
@@ -12,6 +14,7 @@ test_that("agify", {
 ################################# genderize() ##################################
 test_that("genderize", {
   expect_error(genderize())
+  skip_on_cran()
   expect_true(is.character(genderize("Maria")))
   expect_true(is.character(genderize("Maria", country_id = "US")))
   expect_true(is.data.frame(genderize("Maria", simplify = FALSE)))
@@ -23,6 +26,7 @@ test_that("genderize", {
 ################################ nationalize() #################################
 test_that("nationalize", {
   expect_error(nationalize())
+  skip_on_cran()
   expect_true(is.character(nationalize("Maria", sliced = TRUE)))
   expect_true(length(nationalize("Maria", sliced = FALSE))>1)
   expect_true(is.data.frame(nationalize("Maria", simplify = FALSE, sliced=TRUE)))
@@ -34,7 +38,7 @@ test_that("nationalize", {
 ############################ supported_countries() #############################
 test_that("supported_countries", {
   expect_error(supported_countries())
-
+  skip_on_cran()
   expect_true(is.data.frame(supported_countries(type="genderize")))
   expect_true(is.data.frame(supported_countries(type="agify")))
   expect_true(is.data.frame(supported_countries(type="nationalize")))
@@ -77,6 +81,7 @@ test_that("null_to_na", {
 ################################ api_request() #################################
 test_that("api_request", {
   expect_error(api_request())
+  skip_on_cran()
   expect_true(is.data.frame(api_request(x="Maria", type="gender")))
   expect_true(is.data.frame(api_request(x=c("Maria", "Ben"), type="gender")))
   expect_true(is.data.frame(api_request(x="Maria",country_id = "US", type="gender")))
@@ -88,6 +93,7 @@ test_that("api_request", {
 ################################# sequencer() ##################################
 test_that("sequencer", {
   expect_error(sequencer())
+  skip_on_cran()
   expect_true(is.data.frame(sequencer(input = data.frame(x=c("Ben"),
                                                          country_id=c("NO COUNTRY"),
                                                          id=1,
@@ -98,6 +104,7 @@ test_that("sequencer", {
 ############################ country_distributor() #############################
 test_that("country_distributor", {
   expect_error(country_distributor())
+  skip_on_cran()
   expect_true(is.data.frame(country_distributor(x = "Ben", type = "gender", "US")))
   expect_error(country_distributor(x = "Ben", type = "gender", c("ES","US")))
 })

@@ -42,7 +42,9 @@
 #'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
+#' \donttest{
 #' agify(name=c("Ben", "Maria"))
+#' }
 #' @export
 
 agify <- function(name,
@@ -114,7 +116,9 @@ agify <- function(name,
 #'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
+#' \donttest{
 #' genderize(name=c("Ben", "Maria"))
+#' }
 #' @export
 
 genderize <- function(name,
@@ -181,7 +185,9 @@ genderize <- function(name,
 #'   \href{https://tinyurl.com/odvcvq8}{GDPR}
 #'    when dealing with personal data.
 #' @examples
+#' \donttest{
 #' nationalize(name=c("Ben", "Maria"))
+#' }
 #' @export
 
 nationalize <- function(name,

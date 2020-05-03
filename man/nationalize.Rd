@@ -65,7 +65,9 @@ The function automatically handles pagination (max. 10 names per API
 }
 
 \examples{
+\donttest{
 nationalize(name=c("Ben", "Maria"))
+}
 }
 \seealso{
 \code{\link{genderize}}, \code{\link{agify}}
