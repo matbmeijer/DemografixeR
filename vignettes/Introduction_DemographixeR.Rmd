@@ -56,9 +56,9 @@ They all work similarly, and allow to be integrated in multiple workflows. Using
 ```{r result, echo=FALSE, cache=FALSE}
 library("DemografixeR")
 cust_names<-c("Maria", "Ben", "Claudia", "Adam", "Hannah", "Robert")
-r1 <- genderize(cust_names)
-r2 <- agify(cust_names)
-r3 <- nationalize(cust_names)
+r1 <- c("female", "male", "female", "male", "female", "male") #genderize()
+r2 <- c(21, 48, 45, 34, 27, 59) #agify()
+r3 <- c("CY", "AU", "CL", "PL", "SL", "US") #nationalize()
 
 res_df <- rbind(
                 data.frame(t(matrix(cust_names)), stringsAsFactors = FALSE),
@@ -74,6 +74,7 @@ row.names(res_df) <- c("**Customers:**",
 knitr::kable(res_df, col.names = NULL)
 
 ```
+
 
 To see how to get to these results, read on!
 
@@ -124,20 +125,32 @@ class(customers_predicted_gender)
 
 Yet, it is also possible to obtain a detailed `data.frame` object with additional information. _DemografixeR_ also allows to use 'pipes':
 
-```{r genderize_dataframe, cache=FALSE}
+```{r genderize_dataframe_print, eval=FALSE}
 gender_df <- genderize(name = customers_names, simplify = FALSE)
 customers_names %>% 
   genderize(simplify = FALSE) %>% 
   knitr::kable(row.names = FALSE)
 
 ```
+```{r genderize_dataframe_calculate, cache=FALSE, echo=FALSE}
+gender_df <- data.frame(name = customers_names,
+           type = "gender",
+           gender = c("female", "male", "female", "male", "female", "male"),
+           probability = c(0.98, 0.95, 0.98, 0.98, 0.97, 0.99),
+           count = c(334287L,77991L, 118604L,  116396L, 13198L, 177418L), stringsAsFactors = FALSE)
+
+knitr::kable(gender_df, row.names = FALSE)
+
+```
+
+
 
 ### Age
 
 We continue with the **age** estimation of our customers. As with the **`genderize(name)`** function, the `simplify` parameter also works with the **`agify(name)`** function to retrieve a `data.frame`:
 
-```{r agify, cache=FALSE}
-customers_predicted_age <- agify(name = customers_names)
+```{r agify_print, cache=FALSE, eval=FALSE}
+customers_predicted_age <- agify(name = customers_names, simplify = FALSE)
 customers_predicted_age
 
 customers_names %>% 
@@ -145,15 +158,27 @@ customers_names %>%
   knitr::kable(row.names = FALSE)
 
 ```
+```{r agify_calculate, cache=FALSE, echo=FALSE}
 
+agify_df <- data.frame(
+  name = customers_names,
+  type = "age",
+  age = c(21L, 48L, 45L, 34L, 27L, 59L),
+  count = c(517258L, 75632L, 110105L, 110754L, 12843L, 160915L),
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(agify_df, row.names = FALSE)
+
+```
 
 ### Nationality
 
 Last but not least, we finish with the **nationality** extrapolation. Equally as with the **`genderize(name)`** and **`agify(name)`** function, the `simplify` parameter also works with the **`nationalize(name)`** function to retrieve a `data.frame`:
 
 
-```{r nationality, cache=FALSE}
-customers_predicted_nationality <- nationalize(name = customers_names)
+```{r nationality_print, cache=FALSE, eval=FALSE}
+customers_predicted_nationality <- nationalize(name = customers_names, simplify = FALSE)
 customers_predicted_nationality
 
 customers_names %>% 
@@ -161,6 +186,19 @@ customers_names %>%
   knitr::kable(row.names = FALSE)
 
 ```
+```{r nationality_calculate, cache=FALSE, echo=FALSE}
+nationality_df <- data.frame(
+  name = customers_names,
+  type = "nationality",
+  country_id = c("CY", "AU", "CL", "PL", "SL", "US"),
+  probability = c(0.05507976, 0.06655340, 0.05593405, 0.09058360, 0.26732540, 0.09094421), 
+  stringsAsFactors = FALSE
+)
+
+knitr::kable(nationality_df, row.names = FALSE)
+
+```
+
 
 ### Other parameters
 
@@ -181,11 +219,20 @@ us_customers_predicted_age
 
 To obtain a `data.frame` of all supported countries, use the **`supported_countries(type)`** function. Here's an example of 5 countries:
 
-```{r supported_countries, cache=FALSE}
+```{r supported_countries_print, cache=FALSE,eval=FALSE}
 supported_countries(type = "genderize") %>% 
   head(5) %>% 
   knitr::kable(row.names = FALSE)
+```
+```{r supported_countries_calculate, cache=FALSE, echo=FALSE}
+countries_df <- data.frame(
+  country_id = c("AD", "AE", "AF", "AG", "AI"),
+  name = c("Andorra","United Arab Emirates", "Afghanistan", "Antigua and Barbuda", "Anguilla"),
+  total = c(29783L, 145847L, 23531L, 1723L,1081L),
+  stringsAsFactors = FALSE
+)
 
+knitr::kable(countries_df, row.names = FALSE)
 ```
 
 In this case the `total` column reflects the number of observations the API has for each country.
