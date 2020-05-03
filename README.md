@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/DemografixeR)](https://CRAN.R-project.org/package=DemografixeR)
 [![Travis build
 status](https://travis-ci.org/matbmeijer/DemografixeR.svg?branch=master)](https://travis-ci.org/matbmeijer/DemografixeR)
 [![AppVeyor build
@@ -102,10 +104,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  571 |            22874 | 2020-04-17 17:38:46     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
 
 ## Disclaimer
 

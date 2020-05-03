@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DemografixeR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -99,7 +99,7 @@
       <h1 data-toc-skip>Introduction to DemografixeR</h1>
                         <h4 class="author">Matthias Brenninkmeijer</h4>
             
-            <h4 class="date">2020-05-03</h4>
+            <h4 class="date">2020-05-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/matbmeijer/DemografixeR/blob/master/vignettes/Introduction_DemographixeR.Rmd"><code>vignettes/Introduction_DemographixeR.Rmd</code></a></small>
       <div class="hidden name"><code>Introduction_DemographixeR.Rmd</code></div>
@@ -287,9 +287,8 @@
 <h3 class="hasAnchor">
 <a href="#age" class="anchor"></a>Age</h3>
 <p>We continue with the <strong>age</strong> estimation of our customers. As with the <strong><code><a href="../reference/genderize.html">genderize(name)</a></code></strong> function, the <code>simplify</code> parameter also works with the <strong><code><a href="../reference/agify.html">agify(name)</a></code></strong> function to retrieve a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">customers_predicted_age</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/agify.html">agify</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">customers_names</span>)
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">customers_predicted_age</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/agify.html">agify</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">customers_names</span>, <span class="kw">simplify</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 <span class="no">customers_predicted_age</span>
-<span class="co">#&gt; [1] 21 48 45 34 27 59</span>
 
 <span class="no">customers_names</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/agify.html">agify</a></span>(<span class="kw">simplify</span> <span class="kw">=</span> <span class="fl">FALSE</span>) <span class="kw">%&gt;%</span>
@@ -345,9 +344,8 @@
 <h3 class="hasAnchor">
 <a href="#nationality" class="anchor"></a>Nationality</h3>
 <p>Last but not least, we finish with the <strong>nationality</strong> extrapolation. Equally as with the <strong><code><a href="../reference/genderize.html">genderize(name)</a></code></strong> and <strong><code><a href="../reference/agify.html">agify(name)</a></code></strong> function, the <code>simplify</code> parameter also works with the <strong><code><a href="../reference/nationalize.html">nationalize(name)</a></code></strong> function to retrieve a <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">customers_predicted_nationality</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/nationalize.html">nationalize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">customers_names</span>)
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">customers_predicted_nationality</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/nationalize.html">nationalize</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="no">customers_names</span>, <span class="kw">simplify</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 <span class="no">customers_predicted_nationality</span>
-<span class="co">#&gt; [1] "CY" "AU" "CL" "PL" "SL" "US"</span>
 
 <span class="no">customers_names</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/nationalize.html">nationalize</a></span>(<span class="kw">simplify</span> <span class="kw">=</span> <span class="fl">FALSE</span>) <span class="kw">%&gt;%</span>
@@ -518,9 +516,9 @@
 <td align="right">0.97</td>
 <td align="right">13198</td>
 <td align="right">1000</td>
-<td align="right">579</td>
-<td align="right">12143</td>
-<td align="left">2020-05-03 20:37:37</td>
+<td align="right">370</td>
+<td align="right">6777</td>
+<td align="left">2020-05-03 22:07:02</td>
 </tr></tbody>
 </table>
 </div>
