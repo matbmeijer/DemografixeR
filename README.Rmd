@@ -38,7 +38,14 @@ You can find all the necessary documentation about the package here:
 
 ## Installation
 
-You can install the development version of DemografixeR following these `R` commands:
+
+You can install the CRAN release version of DemografixeR following this `R` command:
+
+``` r
+install.packages("DemografixeR")
+```
+
+You can also install the development version of DemografixeR following these `R` commands:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")

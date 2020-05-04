@@ -35,8 +35,15 @@ You can find all the necessary documentation about the package
 
 ## Installation
 
-You can install the development version of DemografixeR following these
-`R` commands:
+You can install the CRAN release version of DemografixeR following this
+`R` command:
+
+``` r
+install.packages("DemografixeR")
+```
+
+You can also install the development version of DemografixeR following
+these `R` commands:
 
 ``` r
 if (!require("devtools")) install.packages("devtools")
@@ -104,10 +111,10 @@ genderize(name = names, simplify = FALSE, meta = TRUE) %>% knitr::kable()
 
 |   | name     | type   | gender | probability | count | api\_rate\_limit | api\_rate\_remaining | api\_rate\_reset | api\_request\_timestamp |
 | - | :------- | :----- | :----- | ----------: | ----: | ---------------: | -------------------: | ---------------: | :---------------------- |
-| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
-| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
-| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
-| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  397 |             6823 | 2020-05-03 22:06:17     |
+| 2 | Ben      | gender | male   |        0.95 | 77991 |             1000 |                  831 |             5214 | 2020-05-04 22:33:05     |
+| 1 | Allister | gender | male   |        0.98 |   129 |             1000 |                  831 |             5214 | 2020-05-04 22:33:05     |
+| 3 | Lucie    | gender | female |        0.99 | 85580 |             1000 |                  831 |             5214 | 2020-05-04 22:33:05     |
+| 4 | Paula    | gender | female |        0.98 | 74130 |             1000 |                  831 |             5214 | 2020-05-04 22:33:05     |
 
 ## Disclaimer
 
