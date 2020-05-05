@@ -1,3 +1,8 @@
+# DemografixeR 0.1.1
+
+* Simplified vignette & solved some issues with http requests
+* Improved READMEdocumentation
+
 # DemografixeR 0.1.0
 
 * Added vignette documentation to use the package.
