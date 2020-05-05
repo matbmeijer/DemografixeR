@@ -7,6 +7,6 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* Maintainer: 'Matthias Brenninkmeijer <matthias@brennotten.net>' - Days since last update: 6
 * On win server sometimes openssl gives problems (curl dependency). Yet tests with win-builder worked perfectly.
-* Adapted DESCRIPTION file setting urls between angle brackets (<https:...>)
+* Solved issue in regards to topic ofs "Packages which use Internet resources should fail gracefully with an informative message if the resource is not available or has changed (and not give a check warning nor error)."
